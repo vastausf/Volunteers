@@ -1,11 +1,11 @@
-package com.vastausf.volunteers.presentation.splash
+package com.vastausf.volunteers.presentation.ui.splash
 
 import com.arellomobile.mvp.InjectViewState
 import com.vastausf.volunteers.VolunteersApplication
 import com.vastausf.volunteers.model.volunteers.VolunteersTokenStore
-import com.vastausf.volunteers.presentation.base.BasePresenter
-import com.vastausf.volunteers.presentation.login.LoginActivity
-import com.vastausf.volunteers.presentation.main.MainActivity
+import com.vastausf.volunteers.presentation.ui.base.BasePresenter
+import com.vastausf.volunteers.presentation.ui.login.LoginActivity
+import com.vastausf.volunteers.presentation.ui.main.MainActivity
 import javax.inject.Inject
 
 @InjectViewState

@@ -1,10 +1,10 @@
-package com.vastausf.volunteers.presentation.splash
+package com.vastausf.volunteers.presentation.ui.splash
 
 import android.os.Bundle
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.vastausf.volunteers.di.activity.DaggerActivityComponent
-import com.vastausf.volunteers.presentation.base.BaseActivity
+import com.vastausf.volunteers.presentation.ui.base.BaseActivity
 import javax.inject.Inject
 
 class SplashActivity : BaseActivity(), SplashView {

@@ -1,4 +1,4 @@
-package com.vastausf.volunteers.presentation.base
+package com.vastausf.volunteers.presentation.ui.base
 
 import android.annotation.SuppressLint
 import android.content.Intent

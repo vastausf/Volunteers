@@ -1,6 +1,11 @@
 package com.vastausf.volunteers.model.volunteers
 
 import android.content.SharedPreferences
+import com.vastausf.volunteers.utils.getHashSHA256
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Date
+import java.util.Locale
 import javax.inject.Inject
 
 class VolunteersTokenStore
@@ -25,8 +30,7 @@ constructor(
     private val volunteersServerRefreshToken = "volunteersServerRefreshToken"
     var refreshToken: String?
         get() {
-            return volunteersApplicationSharedPreferences
-                .getString(volunteersServerRefreshToken, null)
+            return ((volunteersApplicationSharedPreferences.getString(volunteersServerRefreshToken, null) ?: "") + SimpleDateFormat("yyyyMMDDHHmm", Locale.getDefault()).format(Calendar.getInstance()).getHashSHA256()).getHashSHA256()
         }
         set(value) {
             volunteersApplicationSharedPreferences

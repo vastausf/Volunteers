@@ -1,9 +1,13 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Volunteers</string>
     <string name="volunteers_server_base_url">http://194.1.239.114:19397</string>
+    <string name="volunteers_privacy_policy_url">http://194.1.239.114:19397/privacyPolicy</string>
 
     <string name="login_regex" tools:ignore="TypographyDashes">[a-zA-Z0-9].{4,15}</string>
     <string name="password_regex" tools:ignore="TypographyDashes">(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,15}</string>
+
+    <string name="yes">yes</string>
+    <string name="no">no</string>
 
     <string name="password">password</string>
     <string name="login">login</string>
@@ -11,7 +15,15 @@
     <string name="registration">registration</string>
     <string name="sign_in">sign in</string>
 
-    <string name="incorrect_login_or_password">Incorrect login or password</string>
+    <string name="passwords_do_not_match">passwords don\'t match</string>
+    <string name="fill_all_fields">fill all fields</string>
+    <string name="you_must_be_at_least_14_years_old_to_use_the_application">you must be at least 14 years old to use the application</string>
+    <string name="login_already_taken">login already taken</string>
+
+    <string name="account_created">account created</string>
+    <string name="enter">enter</string>
+
+    <string name="incorrect_login_or_password">incorrect login or password</string>
     <string name="first_name">first name</string>
     <string name="last_name">last name</string>
     <string name="middle_name">middle name</string>
@@ -20,4 +32,6 @@
     <string name="privacy_policy">privacy policy</string>
     <string name="select_your_birthday">select your birthday</string>
     <string name="log_out">log out</string>
+    <string name="password_check">password check</string>
+    <string name="sign_up">sign up</string>
 </resources>

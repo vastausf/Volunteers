@@ -1,4 +1,4 @@
-package com.vastausf.volunteers.presentation.login
+package com.vastausf.volunteers.presentation.ui.login
 
 import android.os.Bundle
 import android.text.InputType
@@ -8,7 +8,7 @@ import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.vastausf.volunteers.R
 import com.vastausf.volunteers.di.activity.DaggerActivityComponent
 import com.vastausf.volunteers.model.ApplicationDataStore
-import com.vastausf.volunteers.presentation.base.BaseActivity
+import com.vastausf.volunteers.presentation.ui.base.BaseActivity
 import com.vastausf.volunteers.utils.trimAllSpaces
 import kotlinx.android.synthetic.main.activity_login.*
 import javax.inject.Inject

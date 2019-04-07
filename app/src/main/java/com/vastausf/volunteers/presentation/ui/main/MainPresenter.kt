@@ -1,10 +1,10 @@
-package com.vastausf.volunteers.presentation.main
+package com.vastausf.volunteers.presentation.ui.main
 
 import com.arellomobile.mvp.InjectViewState
 import com.vastausf.volunteers.VolunteersApplication
 import com.vastausf.volunteers.model.volunteers.VolunteersTokenStore
-import com.vastausf.volunteers.presentation.base.BasePresenter
-import com.vastausf.volunteers.presentation.login.LoginActivity
+import com.vastausf.volunteers.presentation.ui.base.BasePresenter
+import com.vastausf.volunteers.presentation.ui.login.LoginActivity
 import javax.inject.Inject
 
 @InjectViewState
@@ -16,7 +16,7 @@ constructor(
 ) : BasePresenter<MainView>() {
 
     fun onViewCreated() {
-        viewState.showToast("View created")
+
     }
 
     fun onLogOut() {

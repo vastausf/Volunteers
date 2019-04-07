@@ -4,6 +4,8 @@ import com.squareup.moshi.Moshi
 import com.vastausf.volunteers.R
 import com.vastausf.volunteers.VolunteersApplication
 import com.vastausf.volunteers.model.HttpStatusCodes
+import com.vastausf.volunteers.model.volunteers.data.TokenRefreshI
+import com.vastausf.volunteers.model.volunteers.data.TokenRefreshO
 import okhttp3.Authenticator
 import okhttp3.MediaType
 import okhttp3.OkHttpClient

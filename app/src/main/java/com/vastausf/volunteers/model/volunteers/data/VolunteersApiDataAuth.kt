@@ -1,4 +1,4 @@
-package com.vastausf.volunteers.model.volunteers
+package com.vastausf.volunteers.model.volunteers.data
 
 import com.squareup.moshi.Json
 

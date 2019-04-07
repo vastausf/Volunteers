@@ -14,10 +14,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/spacing_xxx_small"
+        android:indeterminate="true"
         android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         />
 
     <ImageView
@@ -85,11 +86,8 @@
         android:layout_width="@dimen/view_size_xx_huge"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/spacing_large"
-        android:background="@drawable/background_main_button"
+        style="@style/SimpleAccentButton"
         android:text="@string/sign_in"
-        android:textAllCaps="false"
-        android:textColor="@color/colorTextLight"
-        android:textSize="@dimen/font_size_large"
         app:layout_constraintBottom_toTopOf="@+id/tvRegistration"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

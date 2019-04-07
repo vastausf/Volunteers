@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorLayoutBackground"
     android:orientation="vertical"
-    tools:context=".presentation.main.MainActivity"
+    tools:context=".presentation.ui.main.MainActivity"
     >
 
     <android.support.constraint.ConstraintLayout

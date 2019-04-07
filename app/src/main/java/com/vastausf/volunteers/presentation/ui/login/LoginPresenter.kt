@@ -1,16 +1,16 @@
-package com.vastausf.volunteers.presentation.login
+package com.vastausf.volunteers.presentation.ui.login
 
 import com.arellomobile.mvp.InjectViewState
 import com.vastausf.volunteers.R
 import com.vastausf.volunteers.VolunteersApplication
 import com.vastausf.volunteers.model.ApplicationDataStore
 import com.vastausf.volunteers.model.HttpStatusCodes
-import com.vastausf.volunteers.model.volunteers.TokenCreateByLoginI
+import com.vastausf.volunteers.model.volunteers.data.TokenCreateByLoginI
 import com.vastausf.volunteers.model.volunteers.VolunteersApiClient
 import com.vastausf.volunteers.model.volunteers.VolunteersTokenStore
-import com.vastausf.volunteers.presentation.base.BasePresenter
-import com.vastausf.volunteers.presentation.main.MainActivity
-import com.vastausf.volunteers.presentation.registration.RegistrationActivity
+import com.vastausf.volunteers.presentation.ui.base.BasePresenter
+import com.vastausf.volunteers.presentation.ui.main.MainActivity
+import com.vastausf.volunteers.presentation.ui.registration.RegistrationActivity
 import com.vastausf.volunteers.utils.getHashSHA256
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers

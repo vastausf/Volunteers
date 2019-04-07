@@ -1,3 +1,23 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Volunteers</string>
+    <string name="volunteers_server_base_url">http://194.1.239.114:19397</string>
+
+    <string name="login_regex" tools:ignore="TypographyDashes">[a-zA-Z0-9].{4,15}</string>
+    <string name="password_regex" tools:ignore="TypographyDashes">(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,15}</string>
+
+    <string name="password">password</string>
+    <string name="login">login</string>
+    <string name="logo">logo</string>
+    <string name="registration">registration</string>
+    <string name="sign_in">sign in</string>
+
+    <string name="incorrect_login_or_password">Incorrect login or password</string>
+    <string name="first_name">first name</string>
+    <string name="last_name">last name</string>
+    <string name="middle_name">middle name</string>
+    <string name="name">name</string>
+    <string name="birthday">birthday</string>
+    <string name="privacy_policy">privacy policy</string>
+    <string name="select_your_birthday">select your birthday</string>
+    <string name="log_out">log out</string>
 </resources>

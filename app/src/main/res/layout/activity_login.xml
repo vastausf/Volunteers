@@ -1,6 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorLayoutBackground"
+    >
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/spacing_xxx_small"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="@dimen/view_size_xxx_large"
+        android:layout_height="@dimen/view_size_xxx_large"
+        android:layout_marginTop="@dimen/spacing_xxx_large"
+        android:contentDescription="@string/logo"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_icon"
+        />
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/tilLogin"
+        style="@style/TextInputLayout"
+        android:layout_width="@dimen/view_size_xx_huge"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/spacing_x_small"
+
+        app:layout_constraintBottom_toTopOf="@+id/tilPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        >
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/tietLogin"
+            style="@style/TextInputEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/login"
+            android:inputType="textAutoCorrect|text"
+            android:textSize="17sp"
+            />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/tilPassword"
+        style="@style/TextInputLayout"
+        android:layout_width="@dimen/view_size_xx_huge"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/spacing_large"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/bSignIn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        >
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/tietPassword"
+            style="@style/TextInputEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/password"
+            android:includeFontPadding="true"
+            android:inputType="textPhonetic|textPassword"
+            android:textSize="17sp"
+            />
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:id="@+id/bSignIn"
+        android:layout_width="@dimen/view_size_xx_huge"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/spacing_large"
+        android:background="@drawable/background_main_button"
+        android:text="@string/sign_in"
+        android:textAllCaps="false"
+        android:textColor="@color/colorTextLight"
+        android:textSize="@dimen/font_size_large"
+        app:layout_constraintBottom_toTopOf="@+id/tvRegistration"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/tvRegistration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/spacing_large"
+        android:text="@string/registration"
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/font_size_large"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        />
 
 </android.support.constraint.ConstraintLayout>

@@ -5,7 +5,7 @@ import com.vastausf.volunteers.di.application.ApplicationComponent
 import com.vastausf.volunteers.di.application.ApplicationModule
 import com.vastausf.volunteers.di.application.DaggerApplicationComponent
 
-class VolunteersApplication: Application() {
+class VolunteersApplication : Application() {
     lateinit var instance: VolunteersApplication
 
     lateinit var applicationComponent: ApplicationComponent

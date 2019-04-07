@@ -5,11 +5,18 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import com.arellomobile.mvp.MvpAppCompatActivity
+import com.vastausf.volunteers.VolunteersApplication
 
 @SuppressLint("Registered")
-abstract class BaseActivity: MvpAppCompatActivity(), BaseView {
+abstract class BaseActivity : MvpAppCompatActivity(), BaseView {
 
-    override fun startActivity(activity: Class<out MvpAppCompatActivity>, bundle: Bundle?, finish: Boolean) {
+    val volunteersApplication: VolunteersApplication by lazy {
+        application as VolunteersApplication
+    }
+
+    override fun startActivity(activity: Class<out MvpAppCompatActivity>,
+        bundle: Bundle?,
+        finish: Boolean) {
         Intent(this, activity).apply {
             bundle?.let {
                 putExtras(it)
@@ -22,7 +29,12 @@ abstract class BaseActivity: MvpAppCompatActivity(), BaseView {
     }
 
     override fun showToast(text: Any) {
-        Toast.makeText(this, text.toString(), Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, text.toString(), Toast.LENGTH_SHORT)
+            .show()
+    }
+
+    override fun loadingProgress(state: Boolean) {
+
     }
 
 }

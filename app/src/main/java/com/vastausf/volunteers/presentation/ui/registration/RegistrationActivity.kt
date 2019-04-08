@@ -9,15 +9,14 @@ import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.vastausf.volunteers.R
 import com.vastausf.volunteers.di.activity.DaggerActivityComponent
-import com.vastausf.volunteers.presentation.fragment.RegistrationTabFragment4
+import com.vastausf.volunteers.presentation.fragment.RegistrationTabFragment3
 import com.vastausf.volunteers.presentation.pager.RegistrationPagerAdapter
 import com.vastausf.volunteers.presentation.ui.base.BaseActivity
 import com.vastausf.volunteers.utils.trimAllSpaces
 import kotlinx.android.synthetic.main.activity_registration.*
-import java.lang.IllegalStateException
 import javax.inject.Inject
 
-class RegistrationActivity : BaseActivity(), RegistrationView, RegistrationTabFragment4.RegistrationListener {
+class RegistrationActivity : BaseActivity(), RegistrationView, RegistrationTabFragment3.RegistrationListener {
 
     @Inject
     @get:ProvidePresenter
@@ -25,32 +24,36 @@ class RegistrationActivity : BaseActivity(), RegistrationView, RegistrationTabFr
     lateinit var presenter: RegistrationPresenter
 
     override fun onSignUpClick() {
-        val fragment1 = supportFragmentManager
-            .findFragmentByTag("android:switcher:${R.id.vpRegistrationPager}:0")
-        val fragment2 = supportFragmentManager
-            .findFragmentByTag("android:switcher:${R.id.vpRegistrationPager}:1")
-        val fragment3 = supportFragmentManager
-            .findFragmentByTag("android:switcher:${R.id.vpRegistrationPager}:2")
-        val fragment4 = supportFragmentManager
-            .findFragmentByTag("android:switcher:${R.id.vpRegistrationPager}:3")
+        val registrationPagerAdapter = (vpRegistrationPager.adapter as RegistrationPagerAdapter)
 
-        val fragmentView1 = fragment1?.view
-        val fragmentView2 = fragment2?.view
-        val fragmentView3 = fragment3?.view
-        val fragmentView4 = fragment4?.view
+        val registrationTabFragment0 = registrationPagerAdapter.pages[0].view
+        val registrationTabFragment1 = registrationPagerAdapter.pages[1].view
+        val registrationTabFragment2 = registrationPagerAdapter.pages[2].view
+        val registrationTabFragment3 = registrationPagerAdapter.pages[3].view
 
-        if (fragmentView1 == null || fragmentView2 == null || fragmentView3 == null || fragmentView4 == null)
+        if (registrationTabFragment0 == null || registrationTabFragment1 == null || registrationTabFragment2 == null || registrationTabFragment3 == null)
             throw IllegalStateException("Fragments not found.")
 
-        val registrationLogin = fragmentView1.findViewById<TextInputEditText>(R.id.tietRegistrationLogin).text.toString()
-        val registrationPassword = fragmentView1.findViewById<TextInputEditText>(R.id.tietRegistrationPassword).text.toString()
-        val registrationPasswordCheck = fragmentView1.findViewById<TextInputEditText>(R.id.tietRegistrationPasswordCheck).text.toString()
+        val registrationLogin =
+            registrationTabFragment0.findViewById<TextInputEditText>(R.id.tietRegistrationLogin)
+                .text.toString()
+        val registrationPassword =
+            registrationTabFragment0.findViewById<TextInputEditText>(R.id.tietRegistrationPassword)
+                .text.toString()
+        val registrationPasswordCheck =
+            registrationTabFragment0.findViewById<TextInputEditText>(R.id.tietRegistrationPasswordCheck)
+                .text.toString()
 
-        val firstName = fragmentView2.findViewById<TextInputEditText>(R.id.tietFirstName).text.toString()
-        val lastName = fragmentView2.findViewById<TextInputEditText>(R.id.tietLastName).text.toString()
-        val middleName = fragmentView2.findViewById<TextInputEditText>(R.id.tietMiddleName).text.toString()
+        val firstName = registrationTabFragment1.findViewById<TextInputEditText>(R.id.tietFirstName)
+            .text.toString()
+        val lastName = registrationTabFragment1.findViewById<TextInputEditText>(R.id.tietLastName)
+            .text.toString()
+        val middleName =
+            registrationTabFragment1.findViewById<TextInputEditText>(R.id.tietMiddleName)
+                .text.toString()
 
-        val birthday = fragmentView3.findViewById<CalendarView>(R.id.cvUserBirthday).date
+        val birthday = registrationTabFragment2.findViewById<CalendarView>(R.id.cvUserBirthday)
+            .date
 
         presenter.registration(
             registrationLogin.trimAllSpaces(),

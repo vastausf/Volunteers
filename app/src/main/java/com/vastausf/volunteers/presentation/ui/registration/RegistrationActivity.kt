@@ -93,8 +93,10 @@ class RegistrationActivity : BaseActivity(), RegistrationView, RegistrationTabFr
 
         setContentView(R.layout.activity_registration)
 
-        vpRegistrationPager.adapter = RegistrationPagerAdapter(supportFragmentManager)
-        vpRegistrationPager.offscreenPageLimit = 5
+        vpRegistrationPager.apply {
+            adapter = RegistrationPagerAdapter(supportFragmentManager)
+            offscreenPageLimit = adapter?.count ?: 5
+        }
     }
 
 }

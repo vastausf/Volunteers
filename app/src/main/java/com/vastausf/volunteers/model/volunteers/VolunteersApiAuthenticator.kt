@@ -29,38 +29,32 @@ constructor(
         val refreshToken = volunteersTokenStore.refreshToken
 
         val tokenRefreshResponse = try {
-            if (refreshToken != null) {
-                okHttpClient.newCall(
-                    Request
-                        .Builder()
-                        .post(RequestBody.create(
-                            MediaType.get("application/json"),
-                            moshi
-                                .adapter(TokenRefreshO::class.java)
-                                .toJson(TokenRefreshO(
-                                    refreshToken
-                                ))
-                        ))
-                        .url("${volunteersApplication.getString(R.string.volunteers_server_base_url)}/auth/token/create/byRefreshToken")
-                        .build()
-                )
-                    .execute()
-            } else {
-                throw Unauthorized()
-            }
+            okHttpClient.newCall(
+                Request
+                    .Builder()
+                    .post(RequestBody.create(
+                        MediaType.get("application/json"),
+                        moshi
+                            .adapter(TokenRefreshO::class.java)
+                            .toJson(TokenRefreshO(
+                                refreshToken
+                            ))
+                    ))
+                    .url("${volunteersApplication.getString(R.string.volunteers_server_base_url)}/auth/token/create/byRefreshToken")
+                    .build()
+            ).execute()
         } catch (e: Exception) {
             throw e
         }
 
         return when (tokenRefreshResponse.code()) {
             HttpStatusCodes.OK -> {
-                val tokenRefreshI =
-                    moshi
-                        .adapter(TokenRefreshI::class.java)
-                        .fromJson(tokenRefreshResponse.body()?.string().toString())
-
-                volunteersTokenStore.accessToken = tokenRefreshI?.token
-                volunteersTokenStore.refreshToken = refreshToken
+                moshi
+                    .adapter(TokenRefreshI::class.java)
+                    .fromJson(tokenRefreshResponse.body()?.string().toString())?.let {
+                        volunteersTokenStore.accessToken = it.token
+                        volunteersTokenStore.refreshToken = refreshToken
+                    }
 
                 response
                     .request()

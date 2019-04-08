@@ -8,6 +8,7 @@ import com.vastausf.volunteers.R
 import com.vastausf.volunteers.VolunteersApplication
 import com.vastausf.volunteers.model.ApplicationDataStore
 import com.vastausf.volunteers.model.volunteers.VolunteersApiAuthenticator
+import com.vastausf.volunteers.model.volunteers.VolunteersApiClient
 import com.vastausf.volunteers.model.volunteers.VolunteersApiService
 import com.vastausf.volunteers.model.volunteers.VolunteersTokenStore
 import dagger.Module
@@ -40,6 +41,13 @@ class ApplicationModule(
         ApplicationDataStore(volunteersApiSharedPreferences)
 
     @Provides
+    fun provideOkHttpClient(volunteersApiAuthenticator: VolunteersApiAuthenticator): OkHttpClient =
+        OkHttpClient
+            .Builder()
+            .authenticator(volunteersApiAuthenticator)
+            .build()
+
+    @Provides
     fun provideVolunteersApiAuthenticator(
         volunteersApplication: VolunteersApplication,
         volunteersTokenStore: VolunteersTokenStore,
@@ -51,13 +59,6 @@ class ApplicationModule(
             moshi)
 
     @Provides
-    fun provideOkHttpClient(volunteersApiAuthenticator: VolunteersApiAuthenticator): OkHttpClient =
-        OkHttpClient
-            .Builder()
-            .authenticator(volunteersApiAuthenticator)
-            .build()
-
-    @Provides
     fun provideMoshi(): Moshi =
         Moshi
             .Builder()
@@ -65,7 +66,7 @@ class ApplicationModule(
             .build()
 
     @Provides
-    fun provideVolunteersApi(okHttpClient: OkHttpClient, moshi: Moshi): VolunteersApiService =
+    fun provideVolunteersApiService(volunteersApplication: VolunteersApplication, okHttpClient: OkHttpClient, moshi: Moshi): VolunteersApiService =
         Retrofit
             .Builder()
             .client(okHttpClient)
@@ -74,5 +75,9 @@ class ApplicationModule(
             .baseUrl(volunteersApplication.getString(R.string.volunteers_server_base_url))
             .build()
             .create(VolunteersApiService::class.java)
+
+    @Provides
+    fun provideVolunteersApiClient(volunteersApiService: VolunteersApiService, volunteersTokenStore: VolunteersTokenStore): VolunteersApiClient =
+        VolunteersApiClient(volunteersApiService, volunteersTokenStore)
 
 }

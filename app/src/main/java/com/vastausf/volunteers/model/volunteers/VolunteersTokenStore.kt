@@ -15,10 +15,10 @@ constructor(
 ) {
 
     private val accessTokenSharedPreferences = "volunteersServerAccessToken"
-    var accessToken: String?
+    var accessToken: String
         get() {
             return volunteersApplicationSharedPreferences
-                .getString(accessTokenSharedPreferences, null)
+                .getString(accessTokenSharedPreferences, null) ?: ""
         }
         set(value) {
             volunteersApplicationSharedPreferences
@@ -28,9 +28,9 @@ constructor(
         }
 
     private val volunteersServerRefreshToken = "volunteersServerRefreshToken"
-    var refreshToken: String?
+    var refreshToken: String
         get() {
-            return ((volunteersApplicationSharedPreferences.getString(volunteersServerRefreshToken, null) ?: "") + SimpleDateFormat("yyyyMMDDHHmm", Locale.getDefault()).format(Calendar.getInstance()).getHashSHA256()).getHashSHA256()
+            return ((volunteersApplicationSharedPreferences.getString(volunteersServerRefreshToken, null) ?: "") + SimpleDateFormat("yyyyMMddHHmm", Locale.getDefault()).format(Date()).getHashSHA256()).getHashSHA256()
         }
         set(value) {
             volunteersApplicationSharedPreferences

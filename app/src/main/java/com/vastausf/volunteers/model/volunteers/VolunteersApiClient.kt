@@ -8,27 +8,20 @@ import javax.inject.Inject
 
 class VolunteersApiClient
 @Inject constructor(
-    private val volunteersApiService: VolunteersApiService
+    private val volunteersApiService: VolunteersApiService,
+    private val volunteersTokenStore: VolunteersTokenStore
 ) {
 
     private val contentType: String =
-        "application/json"
-
-    private val accept: String =
         "application/json"
 
     fun createTokenByLogin(
         login: String,
         password: String
     ) =
-        volunteersApiService.tokenCreateByLogin(
-            contentType,
-            accept,
-            TokenCreateByLoginO(
-                login,
-                password
-            )
-        )
+        volunteersApiService
+            .tokenCreateByLogin(contentType,
+                TokenCreateByLoginO(login, password))
 
     fun userCreate(
         login: String,
@@ -43,24 +36,15 @@ class VolunteersApiClient
         email: String? = null,
         link: String? = null
     ) =
-        volunteersApiService.userCreate(
+        volunteersApiService
+            .userCreate(contentType,
+                UserRegistrationO(login, password,
+                    UserDataShort(firstName, lastName, middleName, birthday, about, phoneNumber, image, email, link)))
+
+    fun userProfile() {
+        volunteersApiService.userProfile(
             contentType,
-            accept,
-            UserRegistrationO(
-                login,
-                password,
-                UserDataShort(
-                    firstName,
-                    lastName,
-                    middleName,
-                    birthday,
-                    about,
-                    phoneNumber,
-                    image,
-                    email,
-                    link
-                )
-            )
-        )
+            volunteersTokenStore.accessToken)
+    }
 
 }

@@ -5,6 +5,7 @@ import com.vastausf.volunteers.R
 import com.vastausf.volunteers.VolunteersApplication
 import com.vastausf.volunteers.model.ApplicationDataStore
 import com.vastausf.volunteers.model.HttpStatusCodes
+import com.vastausf.volunteers.model.volunteers.Unauthorized
 import com.vastausf.volunteers.model.volunteers.data.TokenCreateByLoginI
 import com.vastausf.volunteers.model.volunteers.VolunteersApiClient
 import com.vastausf.volunteers.model.volunteers.VolunteersTokenStore
@@ -71,8 +72,14 @@ constructor(
                     }
                 }
 
-            else ->
-                viewState.showToast(error::class.java.name)
+            is Unauthorized ->
+                viewState.showToast(volunteersApplication.getString(R.string.incorrect_login_or_password))
+
+
+            else -> {
+                error.printStackTrace()
+                viewState.showToast(volunteersApplication.getString(R.string.unknown_error))
+            }
         }
     }
 

@@ -17,7 +17,7 @@ constructor(
 ) : BasePresenter<SplashView>() {
 
     fun onViewShowed() {
-        if (volunteersTokenStore.accessToken != null) {
+        if (volunteersTokenStore.accessToken.isNotEmpty()) {
             viewState.startActivity(MainActivity::class.java, finish = true)
         } else {
             viewState.startActivity(LoginActivity::class.java, finish = true)

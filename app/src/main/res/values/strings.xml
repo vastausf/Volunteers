@@ -14,6 +14,7 @@
     <string name="logo">logo</string>
     <string name="registration">registration</string>
     <string name="sign_in">sign in</string>
+    <string name="unknown_error">unknown error</string>
 
     <string name="passwords_do_not_match">passwords don\'t match</string>
     <string name="fill_all_fields">fill all fields</string>

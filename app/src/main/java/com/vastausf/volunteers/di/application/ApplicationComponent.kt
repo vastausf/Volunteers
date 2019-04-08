@@ -5,6 +5,7 @@ import com.squareup.moshi.Moshi
 import com.vastausf.volunteers.VolunteersApplication
 import com.vastausf.volunteers.model.ApplicationDataStore
 import com.vastausf.volunteers.model.volunteers.VolunteersApiAuthenticator
+import com.vastausf.volunteers.model.volunteers.VolunteersApiClient
 import com.vastausf.volunteers.model.volunteers.VolunteersApiService
 import com.vastausf.volunteers.model.volunteers.VolunteersTokenStore
 import dagger.Component
@@ -29,5 +30,7 @@ interface ApplicationComponent {
     val moshi: Moshi
 
     val volunteersApiService: VolunteersApiService
+
+    val volunteersApiClient: VolunteersApiClient
 
 }

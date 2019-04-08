@@ -6,11 +6,11 @@
     android:background="@color/colorLayoutBackground"
     android:gravity="center"
     android:orientation="vertical"
-    android:tag="fragment_registration_tab_2"
+    android:tag="fragment_registration_tab_1"
     >
 
     <android.support.design.widget.TextInputLayout
-        android:id="@+id/tilFirstName"
+        android:id="@+id/tilRegistrationLogin"
         style="@style/TextInputLayout"
         android:layout_width="@dimen/view_size_xx_huge"
         android:layout_height="wrap_content"
@@ -18,18 +18,18 @@
         >
 
         <android.support.design.widget.TextInputEditText
-            android:id="@+id/tietFirstName"
+            android:id="@+id/tietRegistrationLogin"
             style="@style/TextInputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/first_name"
-            android:inputType="textAutoCorrect|textPersonName|textCapWords"
+            android:hint="@string/login"
+            android:inputType="textAutoCorrect|textPersonName"
             android:singleLine="true"
             />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
-        android:id="@+id/tilLastName"
+        android:id="@+id/tilRegistrationPassword"
         style="@style/TextInputLayout"
         android:layout_width="@dimen/view_size_xx_huge"
         android:layout_height="wrap_content"
@@ -37,18 +37,18 @@
         >
 
         <android.support.design.widget.TextInputEditText
-            android:id="@+id/tietLastName"
+            android:id="@+id/tietRegistrationPassword"
             style="@style/TextInputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/last_name"
-            android:inputType="textAutoCorrect|textPersonName|textCapWords"
+            android:hint="@string/password"
+            android:inputType="textPhonetic|textPassword"
             android:singleLine="true"
             />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
-        android:id="@+id/tilMiddleName"
+        android:id="@+id/tilRegistrationPasswordCheck"
         style="@style/TextInputLayout"
         android:layout_width="@dimen/view_size_xx_huge"
         android:layout_height="wrap_content"
@@ -56,12 +56,12 @@
         >
 
         <android.support.design.widget.TextInputEditText
-            android:id="@+id/tietMiddleName"
+            android:id="@+id/tietRegistrationPasswordCheck"
             style="@style/TextInputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/middle_name"
-            android:inputType="textAutoCorrect|textPersonName|textCapWords"
+            android:hint="@string/password_check"
+            android:inputType="textPhonetic|textPassword"
             android:singleLine="true"
             />
     </android.support.design.widget.TextInputLayout>

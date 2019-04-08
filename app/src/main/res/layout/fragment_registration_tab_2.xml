@@ -3,67 +3,24 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorLayoutBackground"
     android:gravity="center"
     android:orientation="vertical"
-    android:tag="fragment_registration_tab_2"
+    android:tag="fragment_registration_tab_3"
     >
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/tilFirstName"
-        style="@style/TextInputLayout"
-        android:layout_width="@dimen/view_size_xx_huge"
+    <TextView
+        style="@style/HeaderText"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/spacing_small"
-        >
+        android:gravity="center"
+        android:text="@string/select_your_birthday"
+        />
 
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/tietFirstName"
-            style="@style/TextInputEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/first_name"
-            android:inputType="textAutoCorrect|textPersonName|textCapWords"
-            android:singleLine="true"
-            />
-    </android.support.design.widget.TextInputLayout>
-
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/tilLastName"
-        style="@style/TextInputLayout"
-        android:layout_width="@dimen/view_size_xx_huge"
+    <CalendarView
+        android:id="@+id/cvUserBirthday"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/spacing_small"
-        >
-
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/tietLastName"
-            style="@style/TextInputEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/last_name"
-            android:inputType="textAutoCorrect|textPersonName|textCapWords"
-            android:singleLine="true"
-            />
-    </android.support.design.widget.TextInputLayout>
-
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/tilMiddleName"
-        style="@style/TextInputLayout"
-        android:layout_width="@dimen/view_size_xx_huge"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/spacing_small"
-        >
-
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/tietMiddleName"
-            style="@style/TextInputEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/middle_name"
-            android:inputType="textAutoCorrect|textPersonName|textCapWords"
-            android:singleLine="true"
-            />
-    </android.support.design.widget.TextInputLayout>
+        android:layout_margin="@dimen/spacing_normal"
+        />
 
 </LinearLayout>

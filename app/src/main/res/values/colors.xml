@@ -6,6 +6,7 @@
     <color name="colorText">#404040</color>
     <color name="colorTextLight">#FFFF</color>
     <color name="colorHint">#BBBBBB</color>
+    <color name="colorSpread">#F8F8F8</color>
     <color name="colorPlaceholder">#808080</color>
     <color name="colorLayoutBackground">#FFFFFF</color>
 

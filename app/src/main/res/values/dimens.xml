@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--  FONT SIZES  -->
-    <dimen name="font_size_xxx_small">6sp</dimen>
-    <dimen name="font_size_xx_small">8sp</dimen>
-    <dimen name="font_size_x_small">10sp</dimen>
-    <dimen name="font_size_small">12sp</dimen>
-    <dimen name="font_size_normal">14sp</dimen>
+    <dimen name="font_size_xxx_small">8sp</dimen>
+    <dimen name="font_size_xx_small">10sp</dimen>
+    <dimen name="font_size_x_small">12sp</dimen>
+    <dimen name="font_size_small">14sp</dimen>
+    <dimen name="font_size_normal">15sp</dimen>
     <dimen name="font_size_large">18sp</dimen>
     <dimen name="font_size_x_large">20sp</dimen>
     <dimen name="font_size_xx_large">24sp</dimen>

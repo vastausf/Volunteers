@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/spacing_tiny"
+    >
+
+    <TextView
+        android:id="@+id/tvItemEventTitle"
+        style="@style/HeaderText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Some title"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:id="@+id/tvItemEventPlace"
+            style="@style/SecondaryText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Saransk, school 35"
+            />
+
+        <TextView
+            android:id="@+id/tvItemEventDateTime"
+            style="@style/SecondaryText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="15 march 2019 at 18:00 (2 hour) "
+            />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvItemEventDescription"
+        style="@style/ReadText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum finibus ut massa nec vestibulum. Fusce porta varius pulvinar. In eget scelerisque ipsum. Vivamus porta lacus felis. Pellentesque sed lacinia erat. Mauris suscipit vel dolor eget bibendum. Nullam et libero eget odio molestie lobortis. In pretium, libero eget luctus ornare, ipsum metus porttitor metus, id pretium lectus mauris sed nisi..."
+        />
+
+    <View
+        android:id="@+id/view"
+        style="@style/SpreadLine"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/spacing_tiny"
+        android:gravity="center"
+        android:orientation="horizontal"
+        >
+
+        <ImageButton
+            android:id="@+id/ibItemEventLink"
+            style="@style/Icon"
+            android:layout_margin="@dimen/spacing_tiny"
+            app:srcCompat="@drawable/ic_link"
+            />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_tiny"
+            android:gravity="center"
+            android:orientation="horizontal"
+            >
+
+            <ImageButton
+                android:id="@+id/ibItemEventJoin"
+                style="@style/Icon"
+                android:layout_margin="@dimen/spacing_tiny"
+                app:srcCompat="@drawable/ic_join"
+                />
+
+            <TextView
+                android:id="@+id/tvItemEventJoinCounter"
+                style="@style/SecondaryText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="64"
+                android:textSize="@dimen/font_size_normal"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_tiny"
+            android:gravity="center"
+            android:orientation="horizontal"
+            >
+
+            <ImageButton
+                android:id="@+id/ibItemEventLike"
+                style="@style/Icon"
+                android:layout_margin="@dimen/spacing_tiny"
+                app:srcCompat="@drawable/ic_like"
+                />
+
+            <TextView
+                android:id="@+id/tvItemEventLikeCounter"
+                style="@style/SecondaryText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="64"
+                android:textSize="@dimen/font_size_normal"
+                />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

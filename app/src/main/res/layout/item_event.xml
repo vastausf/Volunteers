@@ -2,10 +2,10 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="@dimen/spacing_tiny"
     >
 
     <TextView
@@ -13,7 +13,7 @@
         style="@style/HeaderText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Some title"
+        android:layout_margin="@dimen/spacing_tiny"
         />
 
     <LinearLayout
@@ -28,7 +28,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Saransk, school 35"
             />
 
         <TextView
@@ -37,16 +36,25 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="15 march 2019 at 18:00 (2 hour) "
             />
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/ivItemEventImage"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/view_size_xxx_large"
+        android:scaleType="centerCrop"
+        android:visibility="gone"
+        tools:srcCompat="@tools:sample/backgrounds/scenic"
+        />
 
     <TextView
         android:id="@+id/tvItemEventDescription"
         style="@style/ReadText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum finibus ut massa nec vestibulum. Fusce porta varius pulvinar. In eget scelerisque ipsum. Vivamus porta lacus felis. Pellentesque sed lacinia erat. Mauris suscipit vel dolor eget bibendum. Nullam et libero eget odio molestie lobortis. In pretium, libero eget luctus ornare, ipsum metus porttitor metus, id pretium lectus mauris sed nisi..."
+        android:ellipsize="end"
+        android:maxLines="7"
         />
 
     <View
@@ -66,6 +74,7 @@
             android:id="@+id/ibItemEventLink"
             style="@style/Icon"
             android:layout_margin="@dimen/spacing_tiny"
+            android:visibility="gone"
             app:srcCompat="@drawable/ic_link"
             />
 
@@ -83,11 +92,13 @@
             android:orientation="horizontal"
             >
 
-            <ImageButton
-                android:id="@+id/ibItemEventJoin"
-                style="@style/Icon"
-                android:layout_margin="@dimen/spacing_tiny"
-                app:srcCompat="@drawable/ic_join"
+            <ToggleButton
+                android:id="@+id/tbItemEventJoin"
+                style="@style/SwitchButton"
+                android:background="@drawable/state_join_button"
+                android:text=""
+                android:textOff=""
+                android:textOn=""
                 />
 
             <TextView
@@ -95,7 +106,6 @@
                 style="@style/SecondaryText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="64"
                 android:textSize="@dimen/font_size_normal"
                 />
         </LinearLayout>
@@ -108,11 +118,13 @@
             android:orientation="horizontal"
             >
 
-            <ImageButton
-                android:id="@+id/ibItemEventLike"
-                style="@style/Icon"
-                android:layout_margin="@dimen/spacing_tiny"
-                app:srcCompat="@drawable/ic_like"
+            <ToggleButton
+                android:id="@+id/tbItemEventLike"
+                style="@style/SwitchButton"
+                android:background="@drawable/state_like_button"
+                android:text=""
+                android:textOff=""
+                android:textOn=""
                 />
 
             <TextView
@@ -120,7 +132,6 @@
                 style="@style/SecondaryText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="64"
                 android:textSize="@dimen/font_size_normal"
                 />
         </LinearLayout>

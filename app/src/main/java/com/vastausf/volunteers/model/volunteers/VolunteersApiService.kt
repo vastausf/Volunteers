@@ -1,5 +1,11 @@
 package com.vastausf.volunteers.model.volunteers
 
+import com.vastausf.volunteers.model.volunteers.data.EventsJoinI
+import com.vastausf.volunteers.model.volunteers.data.EventsJoinO
+import com.vastausf.volunteers.model.volunteers.data.EventsLikeI
+import com.vastausf.volunteers.model.volunteers.data.EventsLikeO
+import com.vastausf.volunteers.model.volunteers.data.FindEventsByParametersI
+import com.vastausf.volunteers.model.volunteers.data.FindEventsByParametersO
 import com.vastausf.volunteers.model.volunteers.data.TokenCreateByLoginI
 import com.vastausf.volunteers.model.volunteers.data.TokenCreateByLoginO
 import com.vastausf.volunteers.model.volunteers.data.UserProfileI
@@ -29,5 +35,26 @@ interface VolunteersApiService {
         @Header("ContentType") contentType: String,
         @Header("Access-Token") accessToken: String
     ): Single<UserProfileI>
+
+    @POST("events/find/list")
+    fun eventsFindByParameters(
+        @Header("ContentType") contentType: String,
+        @Header("Access-Token") accessToken: String,
+        @Body body: FindEventsByParametersO
+    ): Single<FindEventsByParametersI>
+
+    @POST("events/like")
+    fun eventsLike(
+        @Header("ContentType") contentType: String,
+        @Header("Access-Token") accessToken: String,
+        @Body body: EventsLikeO
+    ): Single<EventsLikeI>
+
+    @POST("events/join")
+    fun eventsJoin(
+        @Header("ContentType") contentType: String,
+        @Header("Access-Token") accessToken: String,
+        @Body body: EventsJoinO
+    ): Single<EventsJoinI>
 
 }

@@ -5,15 +5,19 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ToggleButton
+import com.squareup.picasso.Picasso
 import com.vastausf.volunteers.R
+import com.vastausf.volunteers.model.volunteers.data.EventDataFull
 import kotlinx.android.synthetic.main.item_event.view.*
 import java.text.SimpleDateFormat
 import java.util.Locale
 
 class EventsRecyclerViewAdapter(
-    private val items: List<EventsRecyclerViewItem>,
-    private val onLikeClick: (Long) -> Unit,
-    private val onJoinClick: (Long) -> Unit,
+    private val picasso: Picasso,
+    private val items: List<EventDataFull>,
+    private val onLikeClick: (Long, Boolean) -> Unit,
+    private val onJoinClick: (Long, Boolean) -> Unit,
     private val onLinkClick: (String) -> Unit
 ): RecyclerView.Adapter<EventsRecyclerViewAdapter.ViewHolder>() {
     override fun onCreateViewHolder(view: ViewGroup, viewType: Int): ViewHolder {
@@ -32,33 +36,68 @@ class EventsRecyclerViewAdapter(
 
     inner class ViewHolder(val view: View): RecyclerView.ViewHolder(view) {
         @SuppressLint("SetTextI18n")
-        fun bind(itemData: EventsRecyclerViewItem) {
+        fun bind(itemData: EventDataFull) {
             view.apply {
                 tvItemEventTitle.text = itemData.title
-                tvItemEventPlace.text = itemData.place
-                tvItemEventDateTime.text = "${SimpleDateFormat("H:mm dd MMMM yyyy", Locale.getDefault()).format(itemData.datetime)} (${SimpleDateFormat("H:mm", Locale.getDefault()).format(itemData.duration)})"
-                tvItemEventDescription.text = itemData.description
+                tbItemEventLike.isChecked = itemData.liked
+                tbItemEventJoin.isChecked = itemData.joined
                 tvItemEventLikeCounter.text = itemData.likeCount.toString()
                 tvItemEventJoinCounter.text = itemData.joinCount.toString()
 
-                if (itemData.liked)
-                    ibItemEventLike.setImageDrawable(context.getDrawable(R.drawable.ic_like))
-                else
-                    ibItemEventLike.setImageDrawable(context.getDrawable(R.drawable.ic_like_outline))
-
-                if (itemData.joined)
-                    ibItemEventJoin.setImageDrawable(context.getDrawable(R.drawable.ic_join))
-                else
-                    ibItemEventJoin.setImageDrawable(context.getDrawable(R.drawable.ic_join_outline))
-
-                ibItemEventLike.setOnClickListener {
-                    onLikeClick(itemData.id)
+                itemData.place?.let {
+                    tvItemEventPlace.apply {
+                        visibility = View.VISIBLE
+                        text = it
+                    }
                 }
-                ibItemEventJoin.setOnClickListener {
-                    onJoinClick(itemData.id)
+                itemData.datetime?.let {
+                    tvItemEventDateTime.apply {
+                        visibility = View.VISIBLE
+                        val dateTimeString = SimpleDateFormat("H:mm dd MMMM yyyy", Locale.getDefault()).format(itemData.datetime)
+
+                        text = if (itemData.duration != null)
+                            "$dateTimeString (${SimpleDateFormat("H:mm", Locale.getDefault()).format(itemData.duration)})"
+                        else
+                            dateTimeString
+                    }
                 }
-                ibItemEventLink.setOnClickListener {
-                    onLinkClick(itemData.link)
+                itemData.description?.let { description ->
+                    tvItemEventDescription.text = description
+                }
+                itemData.link?.let { link ->
+                    ibItemEventLink.visibility = View.VISIBLE
+                    ibItemEventLink.setOnClickListener {
+                        onLinkClick(link)
+                    }
+                }
+                itemData.image?.let { image ->
+                    ivItemEventImage.visibility = View.VISIBLE
+
+                    picasso
+                        .load(image)
+                        .placeholder(R.drawable.placeholder_image)
+                        .into(ivItemEventImage)
+                }
+
+                tbItemEventLike.setOnClickListener {
+                    it as ToggleButton
+                    tvItemEventLikeCounter.apply {
+                        text = if (it.isChecked)
+                            (text.toString().toInt() + 1).toString()
+                        else
+                            (text.toString().toInt() - 1).toString()
+                    }
+                    onLikeClick(itemData.id, it.isChecked)
+                }
+                tbItemEventJoin.setOnClickListener {
+                    it as ToggleButton
+                    tvItemEventJoinCounter.apply {
+                        text = if (it.isChecked)
+                            (text.toString().toInt() + 1).toString()
+                        else
+                            (text.toString().toInt() - 1).toString()
+                    }
+                    onJoinClick(itemData.id, it.isChecked)
                 }
             }
         }

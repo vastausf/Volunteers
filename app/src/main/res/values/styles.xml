@@ -80,4 +80,9 @@
         <item name="android:scaleType">centerCrop</item>
     </style>
 
+    <style name="SwitchButton" parent="AppTheme">
+        <item name="android:layout_width">@dimen/view_size_small</item>
+        <item name="android:layout_height">@dimen/view_size_small</item>
+    </style>
+
 </resources>

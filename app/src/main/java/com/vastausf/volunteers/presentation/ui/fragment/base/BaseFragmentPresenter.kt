@@ -6,7 +6,7 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 
 abstract class BaseFragmentPresenter<T : BaseFragmentView> : MvpPresenter<T>() {
-    private val compositeDisposable = CompositeDisposable()
+    protected val compositeDisposable = CompositeDisposable()
 
     protected fun Disposable.unsubscribeOnDestroy() =
         compositeDisposable.add(this)

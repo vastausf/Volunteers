@@ -32,6 +32,12 @@
         <item name="android:gravity">center</item>
     </style>
 
+    <style name="TitleText" parent="AppTheme">
+        <item name="android:fontFamily">@font/roboto_light</item>
+        <item name="android:layout_margin">@dimen/spacing_xxx_small</item>
+        <item name="android:textSize">@dimen/font_size_large</item>
+    </style>
+
     <style name="HeaderText" parent="AppTheme">
         <item name="android:fontFamily">@font/roboto_medium</item>
         <item name="android:layout_margin">@dimen/spacing_xxx_small</item>

@@ -8,7 +8,6 @@ class ApplicationDataStore
 constructor(
     private val volunteersApplicationSharedPreferences: SharedPreferences
 ) {
-
     private val loginSharedPreferences = "volunteersLogin"
     var login: String?
         get() {

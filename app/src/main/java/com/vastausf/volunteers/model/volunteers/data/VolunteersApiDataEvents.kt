@@ -3,8 +3,8 @@ package com.vastausf.volunteers.model.volunteers.data
 import com.squareup.moshi.Json
 
 data class FindEventsByParametersO(
-    @Json(name = "offset") val offset: Long,
-    @Json(name = "amount") val amount: Long,
+    @Json(name = "offset") val offset: Int,
+    @Json(name = "amount") val amount: Int,
     @Json(name = "parameters") val parameters: EventDataSearch
 )
 

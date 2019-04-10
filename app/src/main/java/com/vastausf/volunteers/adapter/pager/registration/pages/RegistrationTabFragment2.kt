@@ -1,4 +1,4 @@
-package com.vastausf.volunteers.adapter.registration
+package com.vastausf.volunteers.adapter.pager.registration.pages
 
 import android.os.Bundle
 import android.support.v4.app.Fragment

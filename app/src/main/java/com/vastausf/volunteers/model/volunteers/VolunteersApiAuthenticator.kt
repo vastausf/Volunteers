@@ -1,5 +1,6 @@
 package com.vastausf.volunteers.model.volunteers
 
+import android.util.Log
 import com.squareup.moshi.Moshi
 import com.vastausf.volunteers.R
 import com.vastausf.volunteers.VolunteersApplication
@@ -13,6 +14,7 @@ import okhttp3.Request
 import okhttp3.RequestBody
 import okhttp3.Response
 import okhttp3.Route
+import timber.log.Timber
 import javax.inject.Inject
 
 class VolunteersApiAuthenticator
@@ -28,7 +30,7 @@ constructor(
     override fun authenticate(route: Route?, response: Response): Request? {
         val refreshToken = volunteersTokenStore.refreshToken
 
-        val tokenRefreshResponse = try {
+        val tokenRefreshResponse =
             okHttpClient.newCall(
                 Request
                     .Builder()
@@ -43,15 +45,14 @@ constructor(
                     .url("${volunteersApplication.getString(R.string.volunteers_server_base_url)}/auth/token/create/byRefreshToken")
                     .build()
             ).execute()
-        } catch (e: Exception) {
-            throw e
-        }
 
         return when (tokenRefreshResponse.code()) {
             HttpStatusCodes.OK -> {
+                Timber.e(tokenRefreshResponse.code().toString())
                 moshi
                     .adapter(TokenRefreshI::class.java)
-                    .fromJson(tokenRefreshResponse.body()?.string().toString())?.let {
+                    .fromJson(tokenRefreshResponse.body()?.string().toString())
+                    ?.let {
                         volunteersTokenStore.accessToken = it.token
                         volunteersTokenStore.refreshToken = refreshToken
                     }
@@ -65,6 +66,7 @@ constructor(
                 throw Unauthorized()
             }
             else -> {
+                Timber.e(tokenRefreshResponse.code().toString())
                 null
             }
         }

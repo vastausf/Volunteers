@@ -1,12 +1,12 @@
-package com.vastausf.volunteers.adapter.registration
+package com.vastausf.volunteers.adapter.pager.registration
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
-import com.vastausf.volunteers.adapter.registration.RegistrationTabFragment0
-import com.vastausf.volunteers.adapter.registration.RegistrationTabFragment1
-import com.vastausf.volunteers.adapter.registration.RegistrationTabFragment2
-import com.vastausf.volunteers.adapter.registration.RegistrationTabFragment3
+import com.vastausf.volunteers.adapter.pager.registration.pages.RegistrationTabFragment0
+import com.vastausf.volunteers.adapter.pager.registration.pages.RegistrationTabFragment1
+import com.vastausf.volunteers.adapter.pager.registration.pages.RegistrationTabFragment2
+import com.vastausf.volunteers.adapter.pager.registration.pages.RegistrationTabFragment3
 
 class RegistrationPagerAdapter(
     fragmentManager: FragmentManager

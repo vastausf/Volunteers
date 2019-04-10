@@ -9,6 +9,8 @@ import com.vastausf.volunteers.model.volunteers.data.EventDataSearch
 import com.vastausf.volunteers.model.volunteers.data.EventsJoinI
 import com.vastausf.volunteers.model.volunteers.data.EventsLikeI
 import com.vastausf.volunteers.model.volunteers.data.FindEventsByParametersI
+import com.vastausf.volunteers.model.volunteers.data.FindGroupsByParametersI
+import com.vastausf.volunteers.model.volunteers.data.GroupDataSearch
 import com.vastausf.volunteers.presentation.ui.fragment.base.BaseFragmentPresenter
 import com.vastausf.volunteers.presentation.ui.fragment.login.LoginFragment
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -25,21 +27,35 @@ constructor(
 ) : BaseFragmentPresenter<MainFragmentView>() {
 
     fun onViewCreated() {
-        viewState.loadingProgress(true)
-
         loadEventList()
+        loadGroupList()
     }
 
-    private fun loadEventList() {
+    fun loadEventList() {
+        viewState.eventsLoadState(true)
+
         volunteersApiClient
             .findEventsByParameters(0, 20, EventDataSearch())
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doFinally {
-                if (compositeDisposable.size() <= 1)
-                    viewState.loadingProgress(false)
+                viewState.eventsLoadState(false)
             }
             .subscribe(::onEventsLoadSuccess, ::onEventsLoadError)
+            .unsubscribeOnDestroy()
+    }
+
+    fun loadMoreEventList(offset: Int) {
+        viewState.eventsLoadState(true)
+
+        volunteersApiClient
+            .findEventsByParameters(offset, 20, EventDataSearch())
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .doFinally {
+                viewState.eventsLoadState(false)
+            }
+            .subscribe(::onEventsLoadMoreSuccess, ::onEventsLoadError)
             .unsubscribeOnDestroy()
     }
 
@@ -47,7 +63,51 @@ constructor(
         viewState.bindEventList(findEventsByParameters.events)
     }
 
+    private fun onEventsLoadMoreSuccess(findEventsByParameters: FindEventsByParametersI) {
+        viewState.bindMoreEventList(findEventsByParameters.events)
+    }
+
     private fun onEventsLoadError(error: Throwable) {
+        viewState.showToast(error::class.java.name)
+    }
+
+    fun loadGroupList() {
+        viewState.groupsLoadState(true)
+
+        volunteersApiClient
+            .findGroupsByParameters(0, 20, GroupDataSearch())
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .doFinally {
+                viewState.groupsLoadState(false)
+            }
+            .subscribe(::onGroupsLoadSuccess, ::onGroupsLoadError)
+            .unsubscribeOnDestroy()
+    }
+
+    fun loadMoreGroupList(offset: Int) {
+        viewState.eventsLoadState(true)
+
+        volunteersApiClient
+            .findGroupsByParameters(offset, 20, GroupDataSearch())
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .doFinally {
+                viewState.eventsLoadState(false)
+            }
+            .subscribe(::onGroupsLoadMoreSuccess, ::onGroupsLoadError)
+            .unsubscribeOnDestroy()
+    }
+
+    private fun onGroupsLoadSuccess(findGroupsByParametersI: FindGroupsByParametersI) {
+        viewState.bindGroupList(findGroupsByParametersI.groups)
+    }
+
+    private fun onGroupsLoadMoreSuccess(findGroupsByParametersI: FindGroupsByParametersI) {
+        viewState.bindMoreGroupList(findGroupsByParametersI.groups)
+    }
+
+    private fun onGroupsLoadError(error: Throwable) {
         viewState.showToast(error::class.java.name)
     }
 

@@ -33,8 +33,8 @@ class ApplicationModule(
             Context.MODE_PRIVATE)
 
     @Provides
-    fun provideVolunteersTokenStore(volunteersApiSharedPreferences: SharedPreferences): VolunteersTokenStore =
-        VolunteersTokenStore(volunteersApiSharedPreferences)
+    fun provideVolunteersTokenStore(volunteersApiSharedPreferences: SharedPreferences, applicationDataStore: ApplicationDataStore): VolunteersTokenStore =
+        VolunteersTokenStore(volunteersApiSharedPreferences, applicationDataStore)
 
     @Provides
     fun provideApplicationDataStore(volunteersApiSharedPreferences: SharedPreferences): ApplicationDataStore =

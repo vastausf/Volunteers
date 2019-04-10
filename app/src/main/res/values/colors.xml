@@ -16,4 +16,6 @@
 
     <color name="colorSimpleButton">@android:color/transparent</color>
     <color name="colorSimpleButtonPressed">#0D000000</color>
+
+    <color name="colorJoinedGroup">#6664B5F6</color>
 </resources>

@@ -6,6 +6,8 @@ import com.vastausf.volunteers.model.volunteers.data.EventsLikeI
 import com.vastausf.volunteers.model.volunteers.data.EventsLikeO
 import com.vastausf.volunteers.model.volunteers.data.FindEventsByParametersI
 import com.vastausf.volunteers.model.volunteers.data.FindEventsByParametersO
+import com.vastausf.volunteers.model.volunteers.data.FindGroupsByParametersI
+import com.vastausf.volunteers.model.volunteers.data.FindGroupsByParametersO
 import com.vastausf.volunteers.model.volunteers.data.TokenCreateByLoginI
 import com.vastausf.volunteers.model.volunteers.data.TokenCreateByLoginO
 import com.vastausf.volunteers.model.volunteers.data.UserProfileI
@@ -56,5 +58,12 @@ interface VolunteersApiService {
         @Header("Access-Token") accessToken: String,
         @Body body: EventsJoinO
     ): Single<EventsJoinI>
+
+    @POST("groups/find/list")
+    fun groupsFindByParameters(
+        @Header("ContentType") contentType: String,
+        @Header("Access-Token") accessToken: String,
+        @Body body: FindGroupsByParametersO
+    ): Single<FindGroupsByParametersI>
 
 }

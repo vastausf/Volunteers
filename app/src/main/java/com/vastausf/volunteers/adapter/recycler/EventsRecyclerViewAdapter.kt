@@ -1,6 +1,5 @@
-package com.vastausf.volunteers.adapter.events
+package com.vastausf.volunteers.adapter.recycler
 
-import android.annotation.SuppressLint
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -16,10 +15,12 @@ import java.util.Locale
 class EventsRecyclerViewAdapter(
     private val picasso: Picasso,
     private val items: List<EventDataFull>,
+    private val onItemClick: (Long) -> Unit,
     private val onLikeClick: (Long, Boolean) -> Unit,
     private val onJoinClick: (Long, Boolean) -> Unit,
-    private val onLinkClick: (String) -> Unit
-): RecyclerView.Adapter<EventsRecyclerViewAdapter.ViewHolder>() {
+    private val onLinkClick: (String) -> Unit,
+    private val onCreateLastElement: (Int) -> Unit
+) : RecyclerView.Adapter<EventsRecyclerViewAdapter.ViewHolder>() {
     override fun onCreateViewHolder(view: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
             LayoutInflater.from(view.context).inflate(R.layout.item_event, view, false)
@@ -31,13 +32,22 @@ class EventsRecyclerViewAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(items[position])
+        if (items.size - 1 == position)
+            onCreateLastElement(items.size)
+
+        holder.bind(position)
     }
 
-    inner class ViewHolder(val view: View): RecyclerView.ViewHolder(view) {
-        @SuppressLint("SetTextI18n")
-        fun bind(itemData: EventDataFull) {
-            view.apply {
+    inner class ViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
+        private lateinit var itemData: EventDataFull
+
+        fun bind(itemPosition: Int) {
+            itemData = items[itemPosition]
+
+            println(itemData)
+
+            itemView.apply {
+                setOnClickListener { onItemClick(itemData.id) }
                 tvItemEventTitle.text = itemData.title
                 tbItemEventLike.isChecked = itemData.liked
                 tbItemEventJoin.isChecked = itemData.joined
@@ -53,10 +63,13 @@ class EventsRecyclerViewAdapter(
                 itemData.datetime?.let {
                     tvItemEventDateTime.apply {
                         visibility = View.VISIBLE
-                        val dateTimeString = SimpleDateFormat("H:mm dd MMMM yyyy", Locale.getDefault()).format(itemData.datetime)
+                        val dateTimeString =
+                            SimpleDateFormat("H:mm dd MMMM yyyy", Locale.getDefault()).format(
+                                itemData.datetime)
 
                         text = if (itemData.duration != null)
-                            "$dateTimeString (${SimpleDateFormat("H:mm", Locale.getDefault()).format(itemData.duration)})"
+                            "$dateTimeString (${SimpleDateFormat("H:mm",
+                                Locale.getDefault()).format(itemData.duration)})"
                         else
                             dateTimeString
                     }

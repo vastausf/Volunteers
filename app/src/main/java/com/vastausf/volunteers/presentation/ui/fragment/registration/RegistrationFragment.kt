@@ -11,8 +11,8 @@ import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.vastausf.volunteers.R
 import com.vastausf.volunteers.di.fragment.DaggerFragmentComponent
-import com.vastausf.volunteers.adapter.registration.RegistrationTabFragment3
-import com.vastausf.volunteers.adapter.registration.RegistrationPagerAdapter
+import com.vastausf.volunteers.adapter.pager.registration.pages.RegistrationTabFragment3
+import com.vastausf.volunteers.adapter.pager.registration.RegistrationPagerAdapter
 import com.vastausf.volunteers.presentation.ui.fragment.base.BaseFragment
 import com.vastausf.volunteers.utils.trimAllSpaces
 import kotlinx.android.synthetic.main.fragment_registration.*

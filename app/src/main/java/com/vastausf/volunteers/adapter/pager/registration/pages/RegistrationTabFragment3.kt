@@ -1,4 +1,4 @@
-package com.vastausf.volunteers.adapter.registration
+package com.vastausf.volunteers.adapter.pager.registration.pages
 
 import android.content.Context
 import android.os.Bundle

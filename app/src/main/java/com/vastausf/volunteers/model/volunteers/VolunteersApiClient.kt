@@ -7,6 +7,9 @@ import com.vastausf.volunteers.model.volunteers.data.EventsLikeI
 import com.vastausf.volunteers.model.volunteers.data.EventsLikeO
 import com.vastausf.volunteers.model.volunteers.data.FindEventsByParametersI
 import com.vastausf.volunteers.model.volunteers.data.FindEventsByParametersO
+import com.vastausf.volunteers.model.volunteers.data.FindGroupsByParametersI
+import com.vastausf.volunteers.model.volunteers.data.FindGroupsByParametersO
+import com.vastausf.volunteers.model.volunteers.data.GroupDataSearch
 import com.vastausf.volunteers.model.volunteers.data.TokenCreateByLoginI
 import com.vastausf.volunteers.model.volunteers.data.TokenCreateByLoginO
 import com.vastausf.volunteers.model.volunteers.data.UserDataShort
@@ -67,8 +70,8 @@ class VolunteersApiClient
     }
 
     fun findEventsByParameters(
-        offset: Long,
-        amount: Long,
+        offset: Int,
+        amount: Int,
         parameters: EventDataSearch
     ): Single<FindEventsByParametersI> {
         return volunteersApiService.eventsFindByParameters(
@@ -105,6 +108,22 @@ class VolunteersApiClient
             EventsJoinO(
                 eventId,
                 state
+            )
+        )
+    }
+
+    fun findGroupsByParameters(
+        offset: Int,
+        amount: Int,
+        parameters: GroupDataSearch
+    ): Single<FindGroupsByParametersI> {
+        return volunteersApiService.groupsFindByParameters(
+            contentType,
+            volunteersTokenStore.accessToken,
+            FindGroupsByParametersO(
+                offset,
+                amount,
+                parameters
             )
         )
     }

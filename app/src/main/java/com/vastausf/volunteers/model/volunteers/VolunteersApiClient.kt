@@ -64,6 +64,7 @@ class VolunteersApiClient
     }
 
     fun userProfile(): Single<UserProfileI> {
+        println(volunteersTokenStore.accessToken)
         return volunteersApiService.userProfile(
             contentType,
             volunteersTokenStore.accessToken)

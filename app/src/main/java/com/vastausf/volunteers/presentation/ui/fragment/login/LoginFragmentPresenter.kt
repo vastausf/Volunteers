@@ -41,8 +41,7 @@ constructor(
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doFinally {
-                    if (compositeDisposable.size() == 0)
-                        viewState.loadingProgress(false)
+                    viewState.loadingProgress(false)
                 }
                 .subscribe(::onLoginSuccess, ::onLoginError)
                 .unsubscribeOnDestroy()

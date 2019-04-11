@@ -13,6 +13,7 @@ import com.vastausf.volunteers.model.ApplicationDataStore
 import com.vastausf.volunteers.presentation.ui.fragment.base.BaseFragment
 import com.vastausf.volunteers.utils.trimAllSpaces
 import kotlinx.android.synthetic.main.fragment_login.*
+import kotlinx.android.synthetic.main.fragment_login.view.*
 import javax.inject.Inject
 
 class LoginFragment : BaseFragment(), LoginFragmentView {
@@ -28,7 +29,25 @@ class LoginFragment : BaseFragment(), LoginFragmentView {
     override fun onCreateView(inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_login, container, false)
+        val view = inflater.inflate(R.layout.fragment_login, container, false)
+
+        view.bSignIn.setOnClickListener {
+            presenter.onSignIn(
+                tietLogin.text.toString().trimAllSpaces(),
+                tietPassword.text.toString().trimAllSpaces())
+        }
+
+        view.tvRegistration.setOnClickListener {
+            presenter.onRegistration()
+        }
+
+        view.tietPassword.apply {
+            val tf = typeface
+            inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+            typeface = tf
+        }
+
+        return view
     }
 
     override fun onStart() {
@@ -40,8 +59,6 @@ class LoginFragment : BaseFragment(), LoginFragmentView {
             tietLogin.setText(login)
             tietPassword.requestFocus()
         }
-
-        bindViewMethods()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,24 +70,6 @@ class LoginFragment : BaseFragment(), LoginFragmentView {
                 .inject(this)
         }
         super.onCreate(savedInstanceState)
-    }
-
-    private fun bindViewMethods() {
-        bSignIn.setOnClickListener {
-            presenter.onSignIn(
-                tietLogin.text.toString().trimAllSpaces(),
-                tietPassword.text.toString().trimAllSpaces())
-        }
-
-        tvRegistration.setOnClickListener {
-            presenter.onRegistration()
-        }
-
-        tietPassword.apply {
-            val tf = typeface
-            inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
-            typeface = tf
-        }
     }
 
     override fun loadingProgress(state: Boolean) {

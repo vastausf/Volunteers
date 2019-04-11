@@ -1,11 +1,13 @@
 package com.vastausf.volunteers.presentation.ui.fragment.base
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.support.v4.app.FragmentTransaction
 import android.widget.Toast
 import com.arellomobile.mvp.MvpAppCompatFragment
 import com.vastausf.volunteers.R
 import com.vastausf.volunteers.VolunteersApplication
+import com.vastausf.volunteers.presentation.ui.activity.base.BaseActivity
 
 @SuppressLint("Registered")
 abstract class BaseFragment : MvpAppCompatFragment(), BaseFragmentView {
@@ -29,6 +31,13 @@ abstract class BaseFragment : MvpAppCompatFragment(), BaseFragmentView {
     override fun showToast(text: Any) {
         Toast.makeText(activity, text.toString(), Toast.LENGTH_SHORT)
             .show()
+    }
+
+    override fun launchActivity(activity: BaseActivity, finish: Boolean) {
+        Intent(this.activity, activity::class.java).apply {
+            this@BaseFragment.activity?.startActivity(this)
+            if (finish) this@BaseFragment.activity?.finishAffinity()
+        }
     }
 
     override fun loadingProgress(state: Boolean) {

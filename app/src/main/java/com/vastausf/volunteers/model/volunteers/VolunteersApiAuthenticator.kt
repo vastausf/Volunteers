@@ -1,6 +1,5 @@
 package com.vastausf.volunteers.model.volunteers
 
-import android.util.Log
 import com.squareup.moshi.Moshi
 import com.vastausf.volunteers.R
 import com.vastausf.volunteers.VolunteersApplication
@@ -42,9 +41,11 @@ constructor(
                                 refreshToken
                             ))
                     ))
-                    .url("${volunteersApplication.getString(R.string.volunteers_server_base_url)}/auth/token/create/byRefreshToken")
+                    .url(volunteersApplication.getString(R.string.volunteers_server_base_url) +
+                        "/auth/token/create/byRefreshToken")
                     .build()
-            ).execute()
+            )
+                .execute()
 
         return when (tokenRefreshResponse.code()) {
             HttpStatusCodes.OK -> {

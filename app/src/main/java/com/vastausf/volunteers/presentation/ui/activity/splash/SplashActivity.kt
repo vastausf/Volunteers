@@ -14,7 +14,6 @@ class SplashActivity : BaseActivity(), SplashActivityView {
     @field:InjectPresenter
     lateinit var presenter: SplashActivityPresenter
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         if (savedInstanceState == null)
             DaggerActivityComponent

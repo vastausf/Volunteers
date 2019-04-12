@@ -12,7 +12,6 @@ data class FindGroupsByParametersI(
     @Json(name = "groups") val groups: List<GroupDataFull>
 )
 
-
 /*secondary*/
 data class GroupDataFull(
     @Json(name = "id") val id: Long,

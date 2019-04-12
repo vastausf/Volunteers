@@ -27,9 +27,11 @@ class MainActivity : BaseActivity(), MainActivityView {
 
         setContentView(R.layout.main_activity)
 
-        supportFragmentManager.beginTransaction().apply {
-            add(R.id.fragmentContainer, MainFragment())
-        }.commit()
+        supportFragmentManager.beginTransaction()
+            .apply {
+                add(R.id.fragmentContainer, MainFragment())
+            }
+            .commit()
     }
 
 }

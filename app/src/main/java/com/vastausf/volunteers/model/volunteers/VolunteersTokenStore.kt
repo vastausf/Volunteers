@@ -4,7 +4,6 @@ import android.content.SharedPreferences
 import com.vastausf.volunteers.model.ApplicationDataStore
 import com.vastausf.volunteers.utils.getHashSHA256
 import java.text.SimpleDateFormat
-import java.util.Calendar
 import java.util.Date
 import java.util.Locale
 import javax.inject.Inject
@@ -33,7 +32,10 @@ constructor(
         get() {
             println(accessToken)
             val userId = accessToken.split(":")[0]
-            return "$userId:${("$userId${applicationDataStore.login}${applicationDataStore.passwordHash}${SimpleDateFormat("yyyyMMddHHmm", Locale.getDefault()).format(Date())}").getHashSHA256()}"
+            return "$userId:${("$userId${applicationDataStore.login}" +
+                "${applicationDataStore.passwordHash}" +
+                SimpleDateFormat("yyyyMMddHHmm", Locale.getDefault()).format(Date()))
+                .getHashSHA256()}"
         }
         set(value) {
             volunteersApplicationSharedPreferences

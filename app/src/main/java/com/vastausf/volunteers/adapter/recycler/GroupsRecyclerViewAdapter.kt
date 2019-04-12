@@ -5,23 +5,18 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ToggleButton
 import com.squareup.picasso.Picasso
 import com.vastausf.volunteers.R
-import com.vastausf.volunteers.model.volunteers.data.EventDataFull
 import com.vastausf.volunteers.model.volunteers.data.GroupDataFull
 import jp.wasabeef.picasso.transformations.RoundedCornersTransformation
-import kotlinx.android.synthetic.main.item_event.view.*
 import kotlinx.android.synthetic.main.item_group.view.*
-import java.text.SimpleDateFormat
-import java.util.Locale
 
 class GroupsRecyclerViewAdapter(
     private val picasso: Picasso,
     private val items: List<GroupDataFull>,
     private val onItemClick: (Long) -> Unit,
     private val onCreateLastElement: (Int) -> Unit
-): RecyclerView.Adapter<GroupsRecyclerViewAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<GroupsRecyclerViewAdapter.ViewHolder>() {
     override fun onCreateViewHolder(view: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
             LayoutInflater.from(view.context).inflate(R.layout.item_group, view, false)
@@ -39,7 +34,7 @@ class GroupsRecyclerViewAdapter(
         holder.bind(items[position])
     }
 
-    inner class ViewHolder(val view: View): RecyclerView.ViewHolder(view) {
+    inner class ViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
         @SuppressLint("SetTextI18n")
         fun bind(itemData: GroupDataFull) {
             itemView.apply {

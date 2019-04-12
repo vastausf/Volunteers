@@ -16,7 +16,6 @@ data class UserProfileI(
     @Json(name = "data") val data: UserDataFull
 )
 
-
 //secondary
 
 data class UserDataShort(

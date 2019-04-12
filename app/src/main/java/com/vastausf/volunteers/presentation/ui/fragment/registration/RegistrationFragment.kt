@@ -2,24 +2,26 @@ package com.vastausf.volunteers.presentation.ui.fragment.registration
 
 import android.app.AlertDialog
 import android.os.Bundle
-import android.support.design.widget.TextInputEditText
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CalendarView
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.vastausf.volunteers.R
-import com.vastausf.volunteers.di.fragment.DaggerFragmentComponent
-import com.vastausf.volunteers.adapter.pager.registration.pages.RegistrationTabFragment3
 import com.vastausf.volunteers.adapter.pager.registration.RegistrationPagerAdapter
+import com.vastausf.volunteers.adapter.pager.registration.pages.RegistrationTabFragment3
+import com.vastausf.volunteers.di.fragment.DaggerFragmentComponent
 import com.vastausf.volunteers.presentation.ui.fragment.base.BaseFragment
 import com.vastausf.volunteers.utils.trimAllSpaces
 import kotlinx.android.synthetic.main.fragment_registration.*
 import kotlinx.android.synthetic.main.fragment_registration.view.*
+import kotlinx.android.synthetic.main.fragment_registration_tab_0.view.*
+import kotlinx.android.synthetic.main.fragment_registration_tab_1.view.*
+import kotlinx.android.synthetic.main.fragment_registration_tab_2.view.*
 import javax.inject.Inject
 
-class RegistrationFragment : BaseFragment(), RegistrationFragmentView, RegistrationTabFragment3.RegistrationListener {
+class RegistrationFragment : BaseFragment(), RegistrationFragmentView,
+    RegistrationTabFragment3.RegistrationListener {
 
     @Inject
     @get:ProvidePresenter
@@ -29,34 +31,26 @@ class RegistrationFragment : BaseFragment(), RegistrationFragmentView, Registrat
     override fun onSignUpClick() {
         val registrationPagerAdapter = (vpRegistrationPager.adapter as RegistrationPagerAdapter)
 
-        val registrationTabFragment0 = registrationPagerAdapter.pages[0].view
-        val registrationTabFragment1 = registrationPagerAdapter.pages[1].view
-        val registrationTabFragment2 = registrationPagerAdapter.pages[2].view
-        val registrationTabFragment3 = registrationPagerAdapter.pages[3].view
-
-        if (registrationTabFragment0 == null || registrationTabFragment1 == null || registrationTabFragment2 == null || registrationTabFragment3 == null)
-            throw IllegalStateException("Fragments not found.")
+        val (registrationTabFragment0,
+            registrationTabFragment1,
+            registrationTabFragment2) = registrationPagerAdapter.pages.mapNotNull { it.view }
 
         val registrationLogin =
-            registrationTabFragment0.findViewById<TextInputEditText>(R.id.tietRegistrationLogin)
-                .text.toString()
+            registrationTabFragment0.tietRegistrationLogin.text.toString()
         val registrationPassword =
-            registrationTabFragment0.findViewById<TextInputEditText>(R.id.tietRegistrationPassword)
-                .text.toString()
+            registrationTabFragment0.tietRegistrationPassword.text.toString()
         val registrationPasswordCheck =
-            registrationTabFragment0.findViewById<TextInputEditText>(R.id.tietRegistrationPasswordCheck)
-                .text.toString()
+            registrationTabFragment0.tietRegistrationPasswordCheck.text.toString()
 
-        val firstName = registrationTabFragment1.findViewById<TextInputEditText>(R.id.tietFirstName)
-            .text.toString()
-        val lastName = registrationTabFragment1.findViewById<TextInputEditText>(R.id.tietLastName)
-            .text.toString()
+        val firstName =
+            registrationTabFragment1.tietFirstName.text.toString()
+        val lastName =
+            registrationTabFragment1.tietLastName.text.toString()
         val middleName =
-            registrationTabFragment1.findViewById<TextInputEditText>(R.id.tietMiddleName)
-                .text.toString()
+            registrationTabFragment1.tietMiddleName.text.toString()
 
-        val birthday = registrationTabFragment2.findViewById<CalendarView>(R.id.cvUserBirthday)
-            .date
+        val birthday =
+            registrationTabFragment2.cvUserBirthday.date
 
         presenter.registration(
             registrationLogin.trimAllSpaces(),
@@ -77,10 +71,10 @@ class RegistrationFragment : BaseFragment(), RegistrationFragmentView, Registrat
         AlertDialog
             .Builder(this.context)
             .setMessage(R.string.account_created)
-            .setPositiveButton(R.string.enter) { dialog, which ->
+            .setPositiveButton(R.string.enter) { _, _ ->
                 presenter.onAccountEnter()
             }
-            .setNegativeButton(R.string.no) { dialog, which ->
+            .setNegativeButton(R.string.no) { dialog, _ ->
                 dialog.dismiss()
             }
             .create()
@@ -94,8 +88,9 @@ class RegistrationFragment : BaseFragment(), RegistrationFragmentView, Registrat
 
         view.vpRegistrationPager.apply {
             childFragmentManager.let {
-                adapter = RegistrationPagerAdapter(it)
-                offscreenPageLimit = adapter?.count ?: 5
+                val registrationPagerAdapter = RegistrationPagerAdapter(it)
+                adapter = registrationPagerAdapter
+                offscreenPageLimit = registrationPagerAdapter.pages.size
             }
         }
 

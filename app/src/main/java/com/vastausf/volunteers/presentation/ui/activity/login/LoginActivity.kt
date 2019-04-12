@@ -27,9 +27,11 @@ class LoginActivity : BaseActivity(), LoginActivityView {
 
         setContentView(R.layout.login_activity)
 
-        supportFragmentManager.beginTransaction().apply {
-            add(R.id.fragmentContainer, LoginFragment())
-        }.commit()
+        supportFragmentManager.beginTransaction()
+            .apply {
+                add(R.id.fragmentContainer, LoginFragment())
+            }
+            .commit()
     }
 
 }

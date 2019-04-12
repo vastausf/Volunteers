@@ -19,7 +19,7 @@ import com.vastausf.volunteers.presentation.ui.fragment.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_events.view.*
 import javax.inject.Inject
 
-class EventsFragment: BaseFragment(), EventsFragmentView {
+class EventsFragment : BaseFragment(), EventsFragmentView {
 
     @Inject
     @get:ProvidePresenter
@@ -69,7 +69,8 @@ class EventsFragment: BaseFragment(), EventsFragmentView {
                 },
                 onLinkClick = { link ->
                     Intent(Intent.ACTION_VIEW,
-                        Uri.parse(if (!link.startsWith("http://") && !link.startsWith("https://")) "http://$link" else link)).apply {
+                        Uri.parse(if (!link.startsWith("http://") &&
+                            !link.startsWith("https://")) "http://$link" else link)).apply {
                         startActivity(this)
                     }
                 },

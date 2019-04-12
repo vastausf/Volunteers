@@ -22,7 +22,8 @@ abstract class BaseActivity : MvpAppCompatActivity(), BaseActivityView {
     }
 
     override fun showToast(text: Any) {
-        Toast.makeText(this, text.toString(), Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, text.toString(), Toast.LENGTH_SHORT)
+            .show()
     }
 
 }

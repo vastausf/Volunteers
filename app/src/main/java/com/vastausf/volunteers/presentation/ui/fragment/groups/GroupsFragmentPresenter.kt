@@ -1,6 +1,7 @@
 package com.vastausf.volunteers.presentation.ui.fragment.groups
 
 import com.arellomobile.mvp.InjectViewState
+import com.vastausf.volunteers.R
 import com.vastausf.volunteers.VolunteersApplication
 import com.vastausf.volunteers.model.volunteers.VolunteersApiClient
 import com.vastausf.volunteers.model.volunteers.data.FindGroupsByParametersI
@@ -26,7 +27,8 @@ constructor(
         viewState.groupsLoadState(true)
 
         volunteersApiClient
-            .findGroupsByParameters(0, 20, GroupDataSearch())
+            .findGroupsByParameters(0,
+                volunteersApplication.resources.getInteger(R.integer.load_items), GroupDataSearch())
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doFinally {
@@ -40,7 +42,8 @@ constructor(
         viewState.groupsLoadState(true)
 
         volunteersApiClient
-            .findGroupsByParameters(offset, 20, GroupDataSearch())
+            .findGroupsByParameters(offset,
+                volunteersApplication.resources.getInteger(R.integer.load_items), GroupDataSearch())
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doFinally {

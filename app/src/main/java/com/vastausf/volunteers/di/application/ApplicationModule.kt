@@ -33,7 +33,8 @@ class ApplicationModule(
             Context.MODE_PRIVATE)
 
     @Provides
-    fun provideVolunteersTokenStore(volunteersApiSharedPreferences: SharedPreferences, applicationDataStore: ApplicationDataStore): VolunteersTokenStore =
+    fun provideVolunteersTokenStore(volunteersApiSharedPreferences: SharedPreferences,
+        applicationDataStore: ApplicationDataStore): VolunteersTokenStore =
         VolunteersTokenStore(volunteersApiSharedPreferences, applicationDataStore)
 
     @Provides
@@ -66,7 +67,9 @@ class ApplicationModule(
             .build()
 
     @Provides
-    fun provideVolunteersApiService(volunteersApplication: VolunteersApplication, okHttpClient: OkHttpClient, moshi: Moshi): VolunteersApiService =
+    fun provideVolunteersApiService(volunteersApplication: VolunteersApplication,
+        okHttpClient: OkHttpClient,
+        moshi: Moshi): VolunteersApiService =
         Retrofit
             .Builder()
             .client(okHttpClient)
@@ -77,7 +80,8 @@ class ApplicationModule(
             .create(VolunteersApiService::class.java)
 
     @Provides
-    fun provideVolunteersApiClient(volunteersApiService: VolunteersApiService, volunteersTokenStore: VolunteersTokenStore): VolunteersApiClient =
+    fun provideVolunteersApiClient(volunteersApiService: VolunteersApiService,
+        volunteersTokenStore: VolunteersTokenStore): VolunteersApiClient =
         VolunteersApiClient(volunteersApiService, volunteersTokenStore)
 
 }

@@ -17,7 +17,7 @@ import com.vastausf.volunteers.presentation.ui.fragment.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_groups.view.*
 import javax.inject.Inject
 
-class GroupsFragment: BaseFragment(), GroupsFragmentView {
+class GroupsFragment : BaseFragment(), GroupsFragmentView {
 
     @Inject
     @get:ProvidePresenter

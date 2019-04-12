@@ -75,7 +75,6 @@ constructor(
             is Unauthorized ->
                 viewState.showToast(volunteersApplication.getString(R.string.incorrect_login_or_password))
 
-
             else -> {
                 error.printStackTrace()
                 viewState.showToast(volunteersApplication.getString(R.string.unknown_error))

@@ -6,6 +6,4 @@ import dagger.Component
 @Component(
     modules = [PresenterModule::class],
     dependencies = [ApplicationComponent::class])
-interface PresenterComponent {
-
-}
+interface PresenterComponent

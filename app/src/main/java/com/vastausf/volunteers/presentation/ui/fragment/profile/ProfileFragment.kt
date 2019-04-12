@@ -16,7 +16,7 @@ import com.vastausf.volunteers.presentation.ui.fragment.settings.SettingsFragmen
 import kotlinx.android.synthetic.main.fragment_profile.view.*
 import javax.inject.Inject
 
-class ProfileFragment: BaseFragment(), ProfileFragmentView {
+class ProfileFragment : BaseFragment(), ProfileFragmentView {
 
     @Inject
     @get:ProvidePresenter

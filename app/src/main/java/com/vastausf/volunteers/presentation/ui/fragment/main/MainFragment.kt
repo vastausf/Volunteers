@@ -13,9 +13,7 @@ import com.vastausf.volunteers.presentation.ui.fragment.base.BaseFragment
 import com.vastausf.volunteers.presentation.ui.fragment.events.EventsFragment
 import com.vastausf.volunteers.presentation.ui.fragment.groups.GroupsFragment
 import com.vastausf.volunteers.presentation.ui.fragment.profile.ProfileFragment
-import kotlinx.android.synthetic.main.fragment_main.*
 import kotlinx.android.synthetic.main.fragment_main.view.*
-import kotlinx.android.synthetic.main.item_event.view.*
 import javax.inject.Inject
 
 class MainFragment : BaseFragment(), MainFragmentView {
@@ -44,28 +42,35 @@ class MainFragment : BaseFragment(), MainFragmentView {
         val view = inflater.inflate(R.layout.fragment_main, container, false)
 
         view.bnvMain.setOnNavigationItemSelectedListener {
-            when (it.itemId) {
+            return@setOnNavigationItemSelectedListener when (it.itemId) {
                 R.id.iEvents -> {
-                    fragmentManager?.beginTransaction()?.apply {
-                        replace(R.id.container, eventsFragment)
-                    }?.commit()
-                    return@setOnNavigationItemSelectedListener true
+                    fragmentManager?.beginTransaction()
+                        ?.apply {
+                            replace(R.id.container, eventsFragment)
+                        }
+                        ?.commit()
+
+                    true
                 }
 
                 R.id.iProfile -> {
-                    fragmentManager?.beginTransaction()?.apply {
-                        replace(R.id.container, profileFragment)
-                    }?.commit()
+                    fragmentManager?.beginTransaction()
+                        ?.apply {
+                            replace(R.id.container, profileFragment)
+                        }
+                        ?.commit()
 
-                    return@setOnNavigationItemSelectedListener true
+                    true
                 }
 
                 R.id.iGroups -> {
-                    fragmentManager?.beginTransaction()?.apply {
-                        replace(R.id.container, groupsFragment)
-                    }?.commit()
+                    fragmentManager?.beginTransaction()
+                        ?.apply {
+                            replace(R.id.container, groupsFragment)
+                        }
+                        ?.commit()
 
-                    return@setOnNavigationItemSelectedListener true
+                    true
                 }
 
                 else -> throw IllegalAccessException("Illegal menu item")

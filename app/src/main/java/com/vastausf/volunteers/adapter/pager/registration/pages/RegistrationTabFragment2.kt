@@ -20,9 +20,11 @@ class RegistrationTabFragment2 : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        view.cvUserBirthday.maxDate = Calendar.getInstance().apply {
-            add(Calendar.YEAR, -14)
-        }.timeInMillis
+        view.cvUserBirthday.maxDate = Calendar.getInstance()
+            .apply {
+                add(Calendar.YEAR, view.resources.getInteger(R.integer.min_years_old))
+            }
+            .timeInMillis
     }
 
 }

@@ -12,7 +12,4 @@ class MainActivityPresenter
 constructor(
     private val volunteersApplication: VolunteersApplication,
     private val volunteersTokenStore: VolunteersTokenStore
-) : BaseActivityPresenter<MainActivityView>() {
-
-
-}
+) : BaseActivityPresenter<MainActivityView>()

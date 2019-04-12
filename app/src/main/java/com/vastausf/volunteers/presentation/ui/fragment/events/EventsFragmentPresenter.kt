@@ -29,7 +29,8 @@ constructor(
         viewState.eventsLoadState(true)
 
         volunteersApiClient
-            .findEventsByParameters(0, 20, EventDataSearch())
+            .findEventsByParameters(0,
+                volunteersApplication.resources.getInteger(R.integer.load_items), EventDataSearch())
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doFinally {
@@ -43,7 +44,8 @@ constructor(
         viewState.eventsLoadState(true)
 
         volunteersApiClient
-            .findEventsByParameters(offset, 20, EventDataSearch())
+            .findEventsByParameters(offset,
+                volunteersApplication.resources.getInteger(R.integer.load_items), EventDataSearch())
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doFinally {
@@ -77,7 +79,7 @@ constructor(
             .unsubscribeOnDestroy()
     }
 
-    private fun onLikeSuccess(eventsLikeI: EventsLikeI) { }
+    private fun onLikeSuccess(eventsLikeI: EventsLikeI) {}
 
     private fun onLikeError(error: Throwable) {
         viewState.showToast(volunteersApplication.getString(R.string.unknown_error))
@@ -97,7 +99,7 @@ constructor(
             .unsubscribeOnDestroy()
     }
 
-    private fun onJoinSuccess(eventsJoinI: EventsJoinI) { }
+    private fun onJoinSuccess(eventsJoinI: EventsJoinI) {}
 
     private fun onJoinError(error: Throwable) {
         viewState.showToast(volunteersApplication.getString(R.string.unknown_error))

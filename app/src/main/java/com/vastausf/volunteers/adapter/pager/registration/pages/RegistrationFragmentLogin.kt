@@ -7,14 +7,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.vastausf.volunteers.R
-import kotlinx.android.synthetic.main.fragment_registration_tab_0.view.*
+import kotlinx.android.synthetic.main.fragment_registration_login.view.*
 
-class RegistrationTabFragment0 : Fragment() {
+class RegistrationFragmentLogin : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?): View {
-        return inflater.inflate(R.layout.fragment_registration_tab_0, container, false)
+        return inflater.inflate(R.layout.fragment_registration_login, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

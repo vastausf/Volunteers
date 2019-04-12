@@ -27,6 +27,7 @@ constructor(
     private val volunteersTokenStore: VolunteersTokenStore,
     private val applicationDataStore: ApplicationDataStore
 ) : BaseFragmentPresenter<LoginFragmentView>() {
+    val registrationFragment = RegistrationFragment()
 
     fun onSignIn(login: String, password: String) {
         val passwordHash = password.getHashSHA256()
@@ -83,7 +84,7 @@ constructor(
     }
 
     fun onRegistration() {
-        viewState.launchFragment(RegistrationFragment())
+        viewState.launchFragment(registrationFragment)
     }
 
 }

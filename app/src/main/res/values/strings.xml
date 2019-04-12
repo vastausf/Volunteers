@@ -36,4 +36,14 @@
     <string name="password_check">password check</string>
     <string name="sign_up">sign up</string>
     <string name="settings">settings</string>
+    <string name="has_date">has date</string>
+    <string name="event_duration">event duration</string>
+    <string name="description">description</string>
+    <string name="title">title</string>
+    <string name="event_time">event time</string>
+    <string name="event_date">event date</string>
+    <string name="place">place</string>
+    <string name="duration">duration</string>
+    <string name="date">date</string>
+    <string name="load_new_image">load new image</string>
 </resources>

@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorLayoutBackground"
     android:gravity="center"
     android:orientation="vertical"
     android:tag="fragment_registration_tab_3"
@@ -16,11 +17,13 @@
         android:text="@string/select_your_birthday"
         />
 
-    <CalendarView
-        android:id="@+id/cvUserBirthday"
-        android:layout_width="match_parent"
+    <DatePicker
+        android:id="@+id/dpUserBirthday"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/spacing_normal"
-        />
+        >
+
+    </DatePicker>
 
 </LinearLayout>

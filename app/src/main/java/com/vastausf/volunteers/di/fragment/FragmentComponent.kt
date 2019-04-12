@@ -5,8 +5,10 @@ import com.vastausf.volunteers.di.application.ApplicationComponent
 import com.vastausf.volunteers.presentation.ui.activity.splash.SplashActivity
 import com.vastausf.volunteers.presentation.ui.fragment.events.EventsFragment
 import com.vastausf.volunteers.presentation.ui.fragment.groups.GroupsFragment
+import com.vastausf.volunteers.presentation.ui.fragment.loadImage.LoadImageFragment
 import com.vastausf.volunteers.presentation.ui.fragment.login.LoginFragment
 import com.vastausf.volunteers.presentation.ui.fragment.main.MainFragment
+import com.vastausf.volunteers.presentation.ui.fragment.newEvent.NewEventFragment
 import com.vastausf.volunteers.presentation.ui.fragment.profile.ProfileFragment
 import com.vastausf.volunteers.presentation.ui.fragment.registration.RegistrationFragment
 import com.vastausf.volunteers.presentation.ui.fragment.settings.SettingsFragment
@@ -34,5 +36,9 @@ interface FragmentComponent {
     fun inject(profileFragment: ProfileFragment)
 
     fun inject(settingsFragment: SettingsFragment)
+
+    fun inject(newEventFragment: NewEventFragment)
+
+    fun inject(loadImageFragment: LoadImageFragment)
 
 }

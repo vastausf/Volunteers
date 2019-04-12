@@ -16,16 +16,24 @@ abstract class BaseFragment : MvpAppCompatFragment(), BaseFragmentView {
         activity?.application as VolunteersApplication
     }
 
-    override fun launchFragment(fragment: BaseFragment, finish: Boolean) {
+    override fun launchFragment(fragment: BaseFragment, finish: Boolean, container: Int) {
         fragmentManager?.beginTransaction()
             ?.apply {
-                this.hide(this@BaseFragment)
+                hide(this@BaseFragment)
                 setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                 add(R.id.fragmentContainer, fragment)
                 if (!finish) addToBackStack(fragment.tag)
             }
             ?.commit()
+    }
 
+    override fun replaceFragment(fragment: BaseFragment, finish: Boolean, container: Int) {
+        fragmentManager?.beginTransaction()
+            ?.apply {
+                setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                replace(container, fragment)
+            }
+            ?.commit()
     }
 
     override fun showToast(text: Any) {

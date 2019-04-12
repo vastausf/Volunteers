@@ -6,7 +6,6 @@ import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.vastausf.volunteers.R
 import com.vastausf.volunteers.di.activity.DaggerActivityComponent
 import com.vastausf.volunteers.presentation.ui.activity.base.BaseActivity
-import com.vastausf.volunteers.presentation.ui.fragment.main.MainFragment
 import javax.inject.Inject
 
 class MainActivity : BaseActivity(), MainActivityView {
@@ -27,11 +26,7 @@ class MainActivity : BaseActivity(), MainActivityView {
 
         setContentView(R.layout.main_activity)
 
-        supportFragmentManager.beginTransaction()
-            .apply {
-                add(R.id.fragmentContainer, MainFragment())
-            }
-            .commit()
+        presenter.onCreate()
     }
 
 }

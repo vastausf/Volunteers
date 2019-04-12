@@ -2,8 +2,8 @@ package com.vastausf.volunteers.presentation.ui.fragment.settings
 
 import com.arellomobile.mvp.InjectViewState
 import com.vastausf.volunteers.model.volunteers.VolunteersTokenStore
-import com.vastausf.volunteers.presentation.ui.activity.login.LoginActivity
 import com.vastausf.volunteers.presentation.ui.fragment.base.BaseFragmentPresenter
+import com.vastausf.volunteers.presentation.ui.fragment.login.LoginFragment
 import javax.inject.Inject
 
 @InjectViewState
@@ -15,7 +15,7 @@ constructor(
 
     fun onLogOut() {
         volunteersTokenStore.removeTokens()
-        viewState.launchActivity(LoginActivity(), finish = true)
+        viewState.replaceFragment(LoginFragment(), true)
     }
 
 }

@@ -44,31 +44,19 @@ class MainFragment : BaseFragment(), MainFragmentView {
         view.bnvMain.setOnNavigationItemSelectedListener {
             return@setOnNavigationItemSelectedListener when (it.itemId) {
                 R.id.iEvents -> {
-                    fragmentManager?.beginTransaction()
-                        ?.apply {
-                            replace(R.id.container, eventsFragment)
-                        }
-                        ?.commit()
+                    replaceFragment(eventsFragment, container = R.id.mainFragmentContainer)
 
                     true
                 }
 
                 R.id.iProfile -> {
-                    fragmentManager?.beginTransaction()
-                        ?.apply {
-                            replace(R.id.container, profileFragment)
-                        }
-                        ?.commit()
+                    replaceFragment(profileFragment, container = R.id.mainFragmentContainer)
 
                     true
                 }
 
                 R.id.iGroups -> {
-                    fragmentManager?.beginTransaction()
-                        ?.apply {
-                            replace(R.id.container, groupsFragment)
-                        }
-                        ?.commit()
+                    replaceFragment(groupsFragment, container = R.id.mainFragmentContainer)
 
                     true
                 }

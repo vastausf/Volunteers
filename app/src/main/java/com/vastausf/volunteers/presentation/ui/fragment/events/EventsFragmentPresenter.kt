@@ -9,6 +9,7 @@ import com.vastausf.volunteers.model.volunteers.data.EventsJoinI
 import com.vastausf.volunteers.model.volunteers.data.EventsLikeI
 import com.vastausf.volunteers.model.volunteers.data.FindEventsByParametersI
 import com.vastausf.volunteers.presentation.ui.fragment.base.BaseFragmentPresenter
+import com.vastausf.volunteers.presentation.ui.fragment.newEvent.NewEventFragment
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
@@ -105,6 +106,10 @@ constructor(
         viewState.showToast(volunteersApplication.getString(R.string.unknown_error))
 
         error.printStackTrace()
+    }
+
+    fun onNewEventClick() {
+        viewState.launchFragment(NewEventFragment())
     }
 
 }

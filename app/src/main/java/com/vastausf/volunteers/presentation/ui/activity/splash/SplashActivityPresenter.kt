@@ -4,7 +4,6 @@ import com.arellomobile.mvp.InjectViewState
 import com.vastausf.volunteers.VolunteersApplication
 import com.vastausf.volunteers.model.volunteers.VolunteersTokenStore
 import com.vastausf.volunteers.presentation.ui.activity.base.BaseActivityPresenter
-import com.vastausf.volunteers.presentation.ui.activity.login.LoginActivity
 import com.vastausf.volunteers.presentation.ui.activity.main.MainActivity
 import javax.inject.Inject
 
@@ -16,12 +15,8 @@ constructor(
     private val volunteersTokenStore: VolunteersTokenStore
 ) : BaseActivityPresenter<SplashActivityView>() {
 
-    fun onViewShowed() {
-        if (volunteersTokenStore.accessToken.isNotEmpty()) {
-            viewState.launchActivity(MainActivity::class.java, true)
-        } else {
-            viewState.launchActivity(LoginActivity::class.java, true)
-        }
+    fun onCreate() {
+        viewState.launchActivity(MainActivity::class.java, true)
     }
 
 }

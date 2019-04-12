@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    >
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/srlEventList"
@@ -15,10 +16,35 @@
         app:layout_constraintTop_toTopOf="parent"
         >
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rvEventList"
+        <android.support.design.widget.CoordinatorLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            />
+            >
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/fabNewEvent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/spacing_normal"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="@dimen/spacing_normal"
+                app:fabSize="normal"
+                app:layout_anchor="@+id/rvEventList"
+                app:layout_anchorGravity="right|bottom"
+                app:srcCompat="@drawable/ic_new"
+                />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rvEventList"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+
+            </android.support.v7.widget.RecyclerView>
+
+        </android.support.design.widget.CoordinatorLayout>
+
     </android.support.v4.widget.SwipeRefreshLayout>
-</android.support.constraint.ConstraintLayout>
+
+</android.support.design.widget.CoordinatorLayout>

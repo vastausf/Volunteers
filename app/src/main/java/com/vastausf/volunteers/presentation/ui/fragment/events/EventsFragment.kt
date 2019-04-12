@@ -85,6 +85,10 @@ class EventsFragment : BaseFragment(), EventsFragmentView {
             presenter.loadEventList()
         }
 
+        view.fabNewEvent.setOnClickListener {
+            presenter.onNewEventClick()
+        }
+
         return view
     }
 
@@ -97,10 +101,6 @@ class EventsFragment : BaseFragment(), EventsFragmentView {
                 .inject(this)
         }
         super.onCreate(savedInstanceState)
-    }
-
-    override fun onStart() {
-        super.onStart()
 
         presenter.onViewCreated()
     }

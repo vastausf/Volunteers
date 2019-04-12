@@ -16,13 +16,15 @@ constructor(
     private val volunteersApiClient: VolunteersApiClient
 ) : BaseFragmentPresenter<ProfileFragmentView>() {
 
-    fun onViewCreated() {
+    fun loadUserData() {
+        viewState.loadingUserData(true)
+
         volunteersApiClient
             .userProfile()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doFinally {
-
+                viewState.loadingUserData(false)
             }
             .subscribe(::onUserProfileLoadSuccess, ::onUserProfileLoadError)
             .unsubscribeOnDestroy()

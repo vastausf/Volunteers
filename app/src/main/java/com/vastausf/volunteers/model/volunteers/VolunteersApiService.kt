@@ -10,13 +10,18 @@ import com.vastausf.volunteers.model.volunteers.data.FindGroupsByParametersI
 import com.vastausf.volunteers.model.volunteers.data.FindGroupsByParametersO
 import com.vastausf.volunteers.model.volunteers.data.TokenCreateByLoginI
 import com.vastausf.volunteers.model.volunteers.data.TokenCreateByLoginO
+import com.vastausf.volunteers.model.volunteers.data.UploadImageI
 import com.vastausf.volunteers.model.volunteers.data.UserProfileI
 import com.vastausf.volunteers.model.volunteers.data.UserRegistrationI
 import com.vastausf.volunteers.model.volunteers.data.UserRegistrationO
 import io.reactivex.Single
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.http.Body
 import retrofit2.http.Header
+import retrofit2.http.Multipart
 import retrofit2.http.POST
+import retrofit2.http.Part
 
 interface VolunteersApiService {
 
@@ -65,5 +70,11 @@ interface VolunteersApiService {
         @Header("Access-Token") accessToken: String,
         @Body body: FindGroupsByParametersO
     ): Single<FindGroupsByParametersI>
+
+    @POST("/images")
+    fun uploadImage(
+        @Header("ContentType") contentType: String,
+        @Body image: RequestBody
+    ): Single<UploadImageI>
 
 }

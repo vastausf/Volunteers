@@ -7,9 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.vastausf.volunteers.R
-import kotlinx.android.synthetic.main.fragment_registration_tab_3.*
+import kotlinx.android.synthetic.main.fragment_registration_privacy_policy.*
 
-class RegistrationTabFragment3 : Fragment() {
+class RegistrationFragmentPrivacyPolicy : Fragment() {
 
     private lateinit var registrationListener: RegistrationListener
 
@@ -20,7 +20,7 @@ class RegistrationTabFragment3 : Fragment() {
     override fun onCreateView(inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?): View {
-        return inflater.inflate(R.layout.fragment_registration_tab_3, container, false)
+        return inflater.inflate(R.layout.fragment_registration_privacy_policy, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

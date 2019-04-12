@@ -6,6 +6,7 @@ import com.vastausf.volunteers.VolunteersApplication
 import com.vastausf.volunteers.model.HttpStatusCodes
 import com.vastausf.volunteers.model.volunteers.VolunteersApiClient
 import com.vastausf.volunteers.model.volunteers.VolunteersTokenStore
+import com.vastausf.volunteers.model.volunteers.data.UserDataShort
 import com.vastausf.volunteers.model.volunteers.data.UserRegistrationI
 import com.vastausf.volunteers.presentation.ui.fragment.base.BaseFragmentPresenter
 import com.vastausf.volunteers.presentation.ui.fragment.main.MainFragment
@@ -36,7 +37,8 @@ constructor(
         firstName: String,
         lastName: String,
         middleName: String,
-        birthday: Long
+        birthday: Long,
+        image: String?
     ) {
         if (firstName.isNotEmpty() && lastName.isNotEmpty() && middleName.isNotEmpty())
             if (password == passwordCheck)
@@ -51,10 +53,13 @@ constructor(
                         .userCreate(
                             login,
                             password.getHashSHA256(),
-                            firstName,
-                            lastName,
-                            middleName,
-                            birthday)
+                            UserDataShort(
+                                firstName,
+                                lastName,
+                                middleName,
+                                birthday,
+                                image = image
+                            ))
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .doFinally {

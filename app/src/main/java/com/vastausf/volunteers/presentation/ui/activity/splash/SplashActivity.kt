@@ -23,6 +23,6 @@ class SplashActivity : BaseActivity(), SplashActivityView {
                 .inject(this)
         super.onCreate(savedInstanceState)
 
-        presenter.onViewShowed()
+        presenter.onCreate()
     }
 }

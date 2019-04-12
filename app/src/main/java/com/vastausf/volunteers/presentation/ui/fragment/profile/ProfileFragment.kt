@@ -26,13 +26,37 @@ class ProfileFragment : BaseFragment(), ProfileFragmentView {
     @Inject
     lateinit var picasso: Picasso
 
+    private val settingsFragment = SettingsFragment()
+
+    @SuppressLint("SetTextI18n")
+    override fun bindUserData(userData: UserDataFull) {
+        view?.apply {
+            tvProfileName.text = "${userData.firstName} ${userData.lastName}"
+            picasso
+                .load(userData.image)
+                .into(ivProfileToolbar)
+        }
+    }
+
+    override fun loadingUserData(state: Boolean) {
+        view?.srlProfileData?.isRefreshing = state
+    }
+
     override fun onCreateView(inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
+        if (view != null) {
+            return view
+        }
+
         val view = inflater.inflate(R.layout.fragment_profile, container, false)
 
         view.bProfileSettings.setOnClickListener {
-            launchFragment(SettingsFragment())
+            launchFragment(settingsFragment, container = R.id.mainFragmentContainer)
+        }
+
+        view.srlProfileData.setOnRefreshListener {
+            presenter.loadUserData()
         }
 
         return view
@@ -47,22 +71,8 @@ class ProfileFragment : BaseFragment(), ProfileFragmentView {
                 .inject(this)
         }
         super.onCreate(savedInstanceState)
-    }
 
-    @SuppressLint("SetTextI18n")
-    override fun bindUserData(userData: UserDataFull) {
-        view?.apply {
-            tvProfileName.text = "${userData.firstName} ${userData.lastName}"
-            picasso
-                .load(userData.image)
-                .into(ivProfileToolbar)
-        }
-    }
-
-    override fun onStart() {
-        super.onStart()
-
-        presenter.onViewCreated()
+        presenter.loadUserData()
     }
 
 }

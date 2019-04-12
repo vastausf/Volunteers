@@ -7,4 +7,6 @@ interface ProfileFragmentView : BaseFragmentView {
 
     fun bindUserData(userData: UserDataFull)
 
+    fun loadingUserData(state: Boolean)
+
 }

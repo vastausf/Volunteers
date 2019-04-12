@@ -23,11 +23,11 @@ data class UserDataShort(
     @Json(name = "last_name") val lastName: String,
     @Json(name = "middle_name") val middleName: String,
     @Json(name = "birthday") val birthday: Long,
-    @Json(name = "about") val about: String?,
-    @Json(name = "phone_number") val phoneNumber: String?,
-    @Json(name = "image") val image: String?,
-    @Json(name = "email") val email: String?,
-    @Json(name = "link") val link: String?
+    @Json(name = "about") val about: String? = null,
+    @Json(name = "phone_number") val phoneNumber: String? = null,
+    @Json(name = "image") val image: String? = null,
+    @Json(name = "email") val email: String? = null,
+    @Json(name = "link") val link: String? = null
 )
 
 data class UserDataFull(

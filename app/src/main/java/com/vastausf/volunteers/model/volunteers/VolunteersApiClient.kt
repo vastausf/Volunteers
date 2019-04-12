@@ -12,11 +12,17 @@ import com.vastausf.volunteers.model.volunteers.data.FindGroupsByParametersO
 import com.vastausf.volunteers.model.volunteers.data.GroupDataSearch
 import com.vastausf.volunteers.model.volunteers.data.TokenCreateByLoginI
 import com.vastausf.volunteers.model.volunteers.data.TokenCreateByLoginO
+import com.vastausf.volunteers.model.volunteers.data.UploadImageI
 import com.vastausf.volunteers.model.volunteers.data.UserDataShort
 import com.vastausf.volunteers.model.volunteers.data.UserProfileI
 import com.vastausf.volunteers.model.volunteers.data.UserRegistrationI
 import com.vastausf.volunteers.model.volunteers.data.UserRegistrationO
 import io.reactivex.Single
+import okhttp3.MediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import retrofit2.http.Multipart
+import java.io.File
 import javax.inject.Inject
 
 class VolunteersApiClient
@@ -27,6 +33,9 @@ class VolunteersApiClient
 
     private val contentType: String =
         "application/json"
+
+    private val contentTypeImage: String =
+        "image/*"
 
     fun createTokenByLogin(
         login: String,
@@ -39,28 +48,12 @@ class VolunteersApiClient
     fun userCreate(
         login: String,
         password: String,
-        firstName: String,
-        lastName: String,
-        middleName: String,
-        birthday: Long,
-        about: String? = null,
-        phoneNumber: String? = null,
-        image: String? = null,
-        email: String? = null,
-        link: String? = null
+        userDataShort: UserDataShort
     ): Single<UserRegistrationI> {
         return volunteersApiService
             .userCreate(contentType,
                 UserRegistrationO(login, password,
-                    UserDataShort(firstName,
-                        lastName,
-                        middleName,
-                        birthday,
-                        about,
-                        phoneNumber,
-                        image,
-                        email,
-                        link)))
+                    userDataShort))
     }
 
     fun userProfile(): Single<UserProfileI> {
@@ -126,6 +119,15 @@ class VolunteersApiClient
                 amount,
                 parameters
             )
+        )
+    }
+
+    fun uploadImage(
+        image: File
+    ): Single<UploadImageI> {
+        return volunteersApiService.uploadImage(
+            contentTypeImage,
+            RequestBody.create(MediaType.parse("image/*"), image)
         )
     }
 

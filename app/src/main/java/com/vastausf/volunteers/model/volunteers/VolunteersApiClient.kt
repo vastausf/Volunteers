@@ -13,7 +13,10 @@ import com.vastausf.volunteers.model.volunteers.data.GroupDataSearch
 import com.vastausf.volunteers.model.volunteers.data.TokenCreateByLoginI
 import com.vastausf.volunteers.model.volunteers.data.TokenCreateByLoginO
 import com.vastausf.volunteers.model.volunteers.data.UploadImageI
+import com.vastausf.volunteers.model.volunteers.data.UserDataEdit
 import com.vastausf.volunteers.model.volunteers.data.UserDataShort
+import com.vastausf.volunteers.model.volunteers.data.UserProfileEditI
+import com.vastausf.volunteers.model.volunteers.data.UserProfileEditO
 import com.vastausf.volunteers.model.volunteers.data.UserProfileI
 import com.vastausf.volunteers.model.volunteers.data.UserRegistrationI
 import com.vastausf.volunteers.model.volunteers.data.UserRegistrationO
@@ -128,6 +131,18 @@ class VolunteersApiClient
         return volunteersApiService.uploadImage(
             contentTypeImage,
             RequestBody.create(MediaType.parse("image/*"), image)
+        )
+    }
+
+    fun editProfile(
+        userDataEdit: UserDataEdit
+    ): Single<UserProfileEditI> {
+        return volunteersApiService.profileEdit(
+            contentType,
+            volunteersTokenStore.accessToken,
+            UserProfileEditO(
+                userDataEdit
+            )
         )
     }
 

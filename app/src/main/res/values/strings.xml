@@ -24,6 +24,8 @@
     <string name="account_created">account created</string>
     <string name="enter">enter</string>
 
+    <string name="success">success</string>
+
     <string name="incorrect_login_or_password">incorrect login or password</string>
     <string name="first_name">first name</string>
     <string name="last_name">last name</string>
@@ -31,7 +33,6 @@
     <string name="name">name</string>
     <string name="birthday">birthday</string>
     <string name="privacy_policy">privacy policy</string>
-    <string name="select_your_birthday">select your birthday</string>
     <string name="log_out">log out</string>
     <string name="password_check">password check</string>
     <string name="sign_up">sign up</string>
@@ -46,4 +47,13 @@
     <string name="duration">duration</string>
     <string name="date">date</string>
     <string name="load_new_image">load new image</string>
+    <string name="phone">phone</string>
+    <string name="email">email</string>
+    <string name="edit">edit</string>
+    <string name="about">about</string>
+    <string name="contacts">contacts</string>
+    <string name="link">link</string>
+    <string name="image">image</string>
+    <string name="time">time</string>
+    <string name="accept">accept</string>
 </resources>

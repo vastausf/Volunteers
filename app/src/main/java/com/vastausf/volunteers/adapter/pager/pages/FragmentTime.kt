@@ -1,4 +1,4 @@
-package com.vastausf.volunteers.adapter.pager.event.pages
+package com.vastausf.volunteers.adapter.pager.pages
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -6,15 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.vastausf.volunteers.R
-import kotlinx.android.synthetic.main.fragment_registration_birthday.view.*
-import java.util.Calendar
 
-class NewEventFragmentImage : Fragment() {
+class FragmentTime : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?): View {
-        return inflater.inflate(R.layout.fragment_new_event_date, container, false)
+        return inflater.inflate(R.layout.fragment_time, container, false)
     }
 
 }

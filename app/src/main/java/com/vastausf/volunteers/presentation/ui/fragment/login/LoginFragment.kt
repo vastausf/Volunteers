@@ -33,15 +33,15 @@ class LoginFragment : BaseFragment(), LoginFragmentView {
 
         view.bSignIn.setOnClickListener {
             presenter.onSignIn(
-                tietLogin.text.toString().trimAllSpaces(),
-                tietPassword.text.toString().trimAllSpaces())
+                etLogin.text.toString().trimAllSpaces(),
+                etPassword.text.toString().trimAllSpaces())
         }
 
         view.tvRegistration.setOnClickListener {
             presenter.onRegistration()
         }
 
-        view.tietPassword.apply {
+        view.etPassword.apply {
             val tf = typeface
             inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
             typeface = tf
@@ -56,8 +56,8 @@ class LoginFragment : BaseFragment(), LoginFragmentView {
         val login = applicationDataStore.login
 
         if (login != null) {
-            tietLogin.setText(login)
-            tietPassword.requestFocus()
+            etLogin.setText(login)
+            etPassword.requestFocus()
         }
     }
 
@@ -74,8 +74,8 @@ class LoginFragment : BaseFragment(), LoginFragmentView {
 
     override fun loadingProgress(state: Boolean) {
         bSignIn.isEnabled = !state
-        tietLogin.isEnabled = !state
-        tietPassword.isEnabled = !state
+        etLogin.isEnabled = !state
+        etPassword.isEnabled = !state
 
         progressBar.visibility = if (state) View.VISIBLE else View.GONE
     }

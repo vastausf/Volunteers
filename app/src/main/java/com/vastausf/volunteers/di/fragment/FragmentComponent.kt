@@ -3,6 +3,7 @@ package com.vastausf.volunteers.di.fragment
 import com.squareup.picasso.Picasso
 import com.vastausf.volunteers.di.application.ApplicationComponent
 import com.vastausf.volunteers.presentation.ui.activity.splash.SplashActivity
+import com.vastausf.volunteers.presentation.ui.fragment.editProfile.EditProfileFragment
 import com.vastausf.volunteers.presentation.ui.fragment.events.EventsFragment
 import com.vastausf.volunteers.presentation.ui.fragment.groups.GroupsFragment
 import com.vastausf.volunteers.presentation.ui.fragment.loadImage.LoadImageFragment
@@ -40,5 +41,7 @@ interface FragmentComponent {
     fun inject(newEventFragment: NewEventFragment)
 
     fun inject(loadImageFragment: LoadImageFragment)
+
+    fun inject(editProfileFragment: EditProfileFragment)
 
 }

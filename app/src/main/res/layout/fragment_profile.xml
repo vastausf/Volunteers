@@ -45,9 +45,10 @@
 
         <android.support.v4.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:clipToPadding="false"
             android:fillViewport="true"
+            android:padding="@dimen/font_size_xx_small"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             >
 
@@ -64,36 +65,113 @@
                     android:layout_height="wrap_content"
                     />
 
-                <Button
-                    android:id="@+id/button"
-                    style="@style/SimpleButton"
+                <View style="@style/SpreadLine" />
+
+                <LinearLayout
+                    android:id="@+id/llProfileEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Button 1"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    >
+
+                    <TextView
+                        android:id="@+id/tvProfileEmailHint"
+                        style="@style/HintText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/email"
+                        />
+
+                    <TextView
+                        android:id="@+id/tvProfileEmail"
+                        style="@style/ItemText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llProfilePhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    >
+
+                    <TextView
+                        android:id="@+id/tvProfilePhoneHint"
+                        style="@style/HintText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/phone"
+                        />
+
+                    <TextView
+                        android:id="@+id/tvProfilePhone"
+                        style="@style/ItemText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvProfileBirthdayHint"
+                    style="@style/HintText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/birthday"
                     />
 
-                <Button
-                    android:id="@+id/button2"
-                    style="@style/SimpleButton"
+                <TextView
+                    android:id="@+id/tvProfileBirthday"
+                    style="@style/ItemText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Button 2"
                     />
 
-                <Button
-                    android:id="@+id/button3"
-                    style="@style/SimpleButton"
+                <View
+                    style="@style/SpreadLine"
+                    android:id="@+id/view2"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Button 3"
                     />
 
+                <LinearLayout
+                    android:id="@+id/llProfileAbout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    >
+
+                    <TextView
+                        android:id="@+id/tvProfileAboutHint"
+                        style="@style/HintText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/about"
+                        />
+
+                    <TextView
+                        android:id="@+id/tvProfileAbout"
+                        style="@style/ItemText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:singleLine="false"
+                        />
+
+                    <View style="@style/SpreadLine" />
+
+                </LinearLayout>
+
                 <Button
-                    android:id="@+id/button4"
+                    android:id="@+id/bProfileEdit"
                     style="@style/SimpleButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Button 4"
+                    android:text="@string/edit"
                     />
 
                 <Button

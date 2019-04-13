@@ -3,6 +3,7 @@ package com.vastausf.volunteers.presentation.ui.fragment.registration
 import com.arellomobile.mvp.InjectViewState
 import com.vastausf.volunteers.R
 import com.vastausf.volunteers.VolunteersApplication
+import com.vastausf.volunteers.model.ApplicationDataStore
 import com.vastausf.volunteers.model.HttpStatusCodes
 import com.vastausf.volunteers.model.volunteers.VolunteersApiClient
 import com.vastausf.volunteers.model.volunteers.VolunteersTokenStore
@@ -22,7 +23,8 @@ class RegistrationFragmentPresenter
 constructor(
     private val volunteersApplication: VolunteersApplication,
     private val volunteersApiClient: VolunteersApiClient,
-    private val tokenStore: VolunteersTokenStore
+    private val tokenStore: VolunteersTokenStore,
+    private val applicationDataStore: ApplicationDataStore
 ) : BaseFragmentPresenter<RegistrationFragmentView>() {
     lateinit var login: String
     lateinit var passwordHash: String
@@ -73,6 +75,10 @@ constructor(
     }
 
     private fun onRegistrationSuccess(userRegistrationI: UserRegistrationI) {
+        applicationDataStore.login = login
+
+        applicationDataStore.passwordHash = passwordHash
+
         accessToken = userRegistrationI.token
 
         refreshToken = userRegistrationI.token.split(":")[0] + login + passwordHash

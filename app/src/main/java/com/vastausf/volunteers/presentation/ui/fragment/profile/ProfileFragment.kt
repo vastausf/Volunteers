@@ -12,8 +12,14 @@ import com.vastausf.volunteers.R
 import com.vastausf.volunteers.di.fragment.DaggerFragmentComponent
 import com.vastausf.volunteers.model.volunteers.data.UserDataFull
 import com.vastausf.volunteers.presentation.ui.fragment.base.BaseFragment
+import com.vastausf.volunteers.presentation.ui.fragment.editProfile.EditProfileFragment
 import com.vastausf.volunteers.presentation.ui.fragment.settings.SettingsFragment
 import kotlinx.android.synthetic.main.fragment_profile.view.*
+import java.text.SimpleDateFormat
+import java.time.Instant
+import java.util.Calendar
+import java.util.Date
+import java.util.Locale
 import javax.inject.Inject
 
 class ProfileFragment : BaseFragment(), ProfileFragmentView {
@@ -27,6 +33,7 @@ class ProfileFragment : BaseFragment(), ProfileFragmentView {
     lateinit var picasso: Picasso
 
     private val settingsFragment = SettingsFragment()
+    private val editProfileFragment = EditProfileFragment()
 
     @SuppressLint("SetTextI18n")
     override fun bindUserData(userData: UserDataFull) {
@@ -35,6 +42,30 @@ class ProfileFragment : BaseFragment(), ProfileFragmentView {
             picasso
                 .load(userData.image)
                 .into(ivProfileToolbar)
+
+            userData.birthday.also { birthday ->
+                val calendar = Calendar.getInstance()
+                val now = calendar.get(Calendar.YEAR)
+                calendar.time = Date(birthday)
+                tvProfileBirthday.text = SimpleDateFormat("dd MMMM yyyy",
+                    Locale.getDefault()).format(birthday) +
+                    " (${now - calendar.get(Calendar.YEAR)})"
+            }
+
+            userData.email?.let { email ->
+                llProfileEmail.visibility = View.VISIBLE
+                tvProfileEmail.text = email
+            }
+
+            userData.phoneNumber?.let { phoneNumber ->
+                llProfilePhone.visibility = View.VISIBLE
+                tvProfilePhone.text = phoneNumber
+            }
+
+            userData.about?.let { about ->
+                llProfileAbout.visibility = View.VISIBLE
+                tvProfileAbout.text = about
+            }
         }
     }
 
@@ -52,7 +83,11 @@ class ProfileFragment : BaseFragment(), ProfileFragmentView {
         val view = inflater.inflate(R.layout.fragment_profile, container, false)
 
         view.bProfileSettings.setOnClickListener {
-            launchFragment(settingsFragment, container = R.id.mainFragmentContainer)
+            launchFragment(settingsFragment)
+        }
+
+        view.bProfileEdit.setOnClickListener {
+            launchFragment(editProfileFragment)
         }
 
         view.srlProfileData.setOnRefreshListener {

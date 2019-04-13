@@ -11,6 +11,8 @@ import com.vastausf.volunteers.model.volunteers.data.FindGroupsByParametersO
 import com.vastausf.volunteers.model.volunteers.data.TokenCreateByLoginI
 import com.vastausf.volunteers.model.volunteers.data.TokenCreateByLoginO
 import com.vastausf.volunteers.model.volunteers.data.UploadImageI
+import com.vastausf.volunteers.model.volunteers.data.UserProfileEditI
+import com.vastausf.volunteers.model.volunteers.data.UserProfileEditO
 import com.vastausf.volunteers.model.volunteers.data.UserProfileI
 import com.vastausf.volunteers.model.volunteers.data.UserRegistrationI
 import com.vastausf.volunteers.model.volunteers.data.UserRegistrationO
@@ -76,5 +78,12 @@ interface VolunteersApiService {
         @Header("ContentType") contentType: String,
         @Body image: RequestBody
     ): Single<UploadImageI>
+
+    @POST("/users/profile/edit")
+    fun profileEdit(
+        @Header("ContentType") contentType: String,
+        @Header("Access-Token") accessToken: String,
+        @Body body: UserProfileEditO
+    ): Single<UserProfileEditI>
 
 }

@@ -52,4 +52,8 @@ abstract class BaseFragment : MvpAppCompatFragment(), BaseFragmentView {
 
     }
 
+    override fun goBack() {
+        fragmentManager?.popBackStack()
+    }
+
 }

@@ -16,6 +16,14 @@ data class UserProfileI(
     @Json(name = "data") val data: UserDataFull
 )
 
+data class UserProfileEditO(
+    @Json(name = "new_data") val newData: UserDataEdit
+)
+
+data class UserProfileEditI(
+    @Json(name = "new_data") val newData: UserDataFull
+)
+
 //secondary
 
 data class UserDataShort(
@@ -41,4 +49,15 @@ data class UserDataFull(
     @Json(name = "image") val image: String?,
     @Json(name = "email") val email: String?,
     @Json(name = "link") val link: String?
+)
+
+data class UserDataEdit(
+    @Json(name = "first_name") val firstName: String? = null,
+    @Json(name = "last_name") val lastName: String? = null,
+    @Json(name = "middle_name") val middleName: String? = null,
+    @Json(name = "about") val about: String? = null,
+    @Json(name = "phone_number") val phoneNumber: String? = null,
+    @Json(name = "image") val image: String? = null,
+    @Json(name = "email") val email: String? = null,
+    @Json(name = "link") val link: String? = null
 )

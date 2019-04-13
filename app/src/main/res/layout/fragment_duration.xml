@@ -2,36 +2,30 @@
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorLayoutBackground"
     >
 
     <TextView
-        android:id="@+id/textView"
         style="@style/HeaderText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/description"
         android:layout_margin="@dimen/spacing_x_large"
-        app:layout_constraintTop_toTopOf="parent"
+        android:text="@string/duration"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         />
 
     <EditText
-        android:id="@+id/etNewEventDescription"
+        android:id="@+id/etDuration"
         style="@style/EditText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/spacing_large"
-        android:ems="10"
-        android:inputType="textMultiLine"
-        android:textAlignment="textStart"
+        android:hint="@string/duration"
+        android:inputType="time"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         />
 </android.support.constraint.ConstraintLayout>

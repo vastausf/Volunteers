@@ -2,7 +2,6 @@
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorLayoutBackground"
@@ -13,21 +12,43 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/spacing_x_large"
-        android:text="@string/duration"
+        android:text="@string/contacts"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         />
 
-    <EditText
-        android:id="@+id/etNewEventDuration"
-        style="@style/EditText"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:inputType="time"
-        />
+        >
+
+        <EditText
+            android:id="@+id/etPhone"
+            style="@style/EditText"
+            android:hint="@string/phone"
+            android:inputType="phone"
+            />
+
+        <EditText
+            android:id="@+id/etEmail"
+            style="@style/EditText"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
+            />
+
+        <EditText
+            android:id="@+id/etLink"
+            style="@style/EditText"
+            android:hint="@string/link"
+            android:inputType="textUri"
+            />
+    </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>

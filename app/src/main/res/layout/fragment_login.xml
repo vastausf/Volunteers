@@ -2,7 +2,6 @@
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorLayoutBackground"
@@ -25,85 +24,66 @@
         android:id="@+id/logo"
         android:layout_width="@dimen/view_size_xxx_large"
         android:layout_height="@dimen/view_size_xxx_large"
-        android:layout_marginTop="@dimen/spacing_xxx_large"
         android:contentDescription="@string/logo"
         android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@id/llLoginForm"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_icon"
         />
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/tilLogin"
-        style="@style/TextInputLayout"
-        android:layout_width="@dimen/view_size_xx_huge"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/spacing_x_small"
-
-        app:layout_constraintBottom_toTopOf="@+id/tilPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        >
-
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/tietLogin"
-            style="@style/TextInputEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/login"
-            android:inputType="textAutoCorrect|text"
-            android:textSize="17sp"
-            />
-    </android.support.design.widget.TextInputLayout>
-
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/tilPassword"
-        style="@style/TextInputLayout"
-        android:layout_width="@dimen/view_size_xx_huge"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/spacing_large"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/bSignIn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        >
-
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/tietPassword"
-            style="@style/TextInputEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/password"
-            android:includeFontPadding="true"
-            android:inputType="textPhonetic|textPassword"
-            android:textSize="17sp"
-            />
-    </android.support.design.widget.TextInputLayout>
-
-    <Button
-        android:id="@+id/bSignIn"
-        android:layout_width="@dimen/view_size_xx_huge"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/spacing_large"
-        style="@style/SimpleAccentButton"
-        android:text="@string/sign_in"
-        app:layout_constraintBottom_toTopOf="@+id/tvRegistration"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        />
-
-    <TextView
-        android:id="@+id/tvRegistration"
+    <LinearLayout
+        android:id="@+id/llLoginForm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/spacing_large"
-        android:text="@string/registration"
-        android:textColor="@color/colorAccent"
-        android:textSize="@dimen/font_size_large"
+        android:orientation="vertical"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logo"
+        >
+
+        <EditText
+            android:id="@+id/etLogin"
+            style="@style/EditText"
+            android:hint="@string/login"
+            android:inputType="textAutoCorrect|textCapWords"
+            />
+
+        <EditText
+            android:id="@+id/etPassword"
+            style="@style/EditText"
+            android:hint="@string/password"
+            android:inputType="textPhonetic|textPassword"
+            />
+
+        <Button
+            android:id="@+id/bSignIn"
+            style="@style/SimpleAccentButton"
+            android:layout_width="@dimen/view_size_xx_huge"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_normal"
+            android:text="@string/sign_in"
+            app:layout_constraintBottom_toTopOf="@+id/tvRegistration"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/tvRegistration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_normal"
+            android:text="@string/registration"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/font_size_large"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+    </LinearLayout>
+
 
 </android.support.constraint.ConstraintLayout>

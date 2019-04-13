@@ -12,25 +12,12 @@
         android:id="@+id/wvPrivacyPolicy"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginBottom="@dimen/spacing_small"
         android:nestedScrollingEnabled="false"
         android:scrollbars="none"
-        app:layout_constraintBottom_toTopOf="@+id/bSignUp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
-
-    <Button
-        android:id="@+id/bSignUp"
-        style="@style/SimpleAccentButton"
-        android:layout_width="@dimen/view_size_xx_huge"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/spacing_small"
-        android:text="@string/sign_up"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         />
 
 

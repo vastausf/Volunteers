@@ -8,56 +8,59 @@ import android.view.ViewGroup
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.vastausf.volunteers.R
-import com.vastausf.volunteers.adapter.pager.registration.RegistrationPagerAdapter
-import com.vastausf.volunteers.adapter.pager.registration.pages.RegistrationFragmentPrivacyPolicy
+import com.vastausf.volunteers.adapter.pager.RegistrationPagerAdapter
+import com.vastausf.volunteers.adapter.pager.pages.FragmentAccept
 import com.vastausf.volunteers.di.fragment.DaggerFragmentComponent
 import com.vastausf.volunteers.presentation.ui.fragment.base.BaseFragment
 import com.vastausf.volunteers.utils.trimAllSpaces
+import kotlinx.android.synthetic.main.fragment_birthday.*
 import kotlinx.android.synthetic.main.fragment_load_image.*
+import kotlinx.android.synthetic.main.fragment_login_data.*
+import kotlinx.android.synthetic.main.fragment_names.*
 import kotlinx.android.synthetic.main.fragment_registration.*
 import kotlinx.android.synthetic.main.fragment_registration.view.*
-import kotlinx.android.synthetic.main.fragment_registration_birthday.*
-import kotlinx.android.synthetic.main.fragment_registration_login.view.*
-import kotlinx.android.synthetic.main.fragment_registration_names.view.*
-import kotlinx.android.synthetic.main.fragment_registration_birthday.view.*
-import kotlinx.android.synthetic.main.fragment_registration_login.*
-import kotlinx.android.synthetic.main.fragment_registration_names.*
 import java.util.Calendar
 import javax.inject.Inject
 
 class RegistrationFragment : BaseFragment(), RegistrationFragmentView,
-    RegistrationFragmentPrivacyPolicy.RegistrationListener {
+    FragmentAccept.AcceptListener {
 
     @Inject
     @get:ProvidePresenter
     @field:InjectPresenter
     lateinit var presenter: RegistrationFragmentPresenter
 
-    override fun onSignUpClick() {
+    lateinit var registrationPagerAdapter: RegistrationPagerAdapter
+
+    override fun onAccept() {
         val registrationPagerAdapter = (vpRegistration.adapter as RegistrationPagerAdapter)
 
         val registrationLogin =
-            registrationPagerAdapter.registrationFragmentLogin.tietRegistrationLogin.text.toString()
+            registrationPagerAdapter.registrationFragmentLogin.etLogin.text.toString()
         val registrationPassword =
-            registrationPagerAdapter.registrationFragmentLogin.tietRegistrationPassword.text.toString()
+            registrationPagerAdapter.registrationFragmentLogin.etPassword.text.toString()
         val registrationPasswordCheck =
-            registrationPagerAdapter.registrationFragmentLogin.tietRegistrationPasswordCheck.text.toString()
+            registrationPagerAdapter.registrationFragmentLogin.etPasswordCheck.text.toString()
 
         val firstName =
-            registrationPagerAdapter.registrationFragmentNames.tietFirstName.text.toString()
+            registrationPagerAdapter.registrationFragmentNames.etFirstName.text.toString()
         val lastName =
-            registrationPagerAdapter.registrationFragmentNames.tietLastName.text.toString()
+            registrationPagerAdapter.registrationFragmentNames.etLastName.text.toString()
         val middleName =
-            registrationPagerAdapter.registrationFragmentNames.tietMiddleName.text.toString()
+            registrationPagerAdapter.registrationFragmentNames.etMiddleName.text.toString()
 
         val birthday =
-            Calendar.getInstance().apply {
-                val datePicker = registrationPagerAdapter.registrationFragmentBirthday.dpUserBirthday
-                set(datePicker.year, datePicker.month, datePicker.dayOfMonth)
-            }.time.time
+            Calendar.getInstance()
+                .apply {
+                    val datePicker =
+                        registrationPagerAdapter.registrationFragmentBirthday.dpBirthday
+                    set(datePicker.year, datePicker.month, datePicker.dayOfMonth)
+                }
+                .time.time
 
         val image =
-            registrationPagerAdapter.loadImageFragment.etImageLink.text.toString().ifEmpty { null }
+            registrationPagerAdapter.loadImageFragment.etImageLink.text.toString()
+                .ifEmpty { null }
 
         presenter.registration(
             registrationLogin.trimAllSpaces(),
@@ -82,8 +85,11 @@ class RegistrationFragment : BaseFragment(), RegistrationFragmentView,
             .setPositiveButton(R.string.enter) { _, _ ->
                 presenter.onAccountEnter()
             }
-            .setNegativeButton(R.string.no) { dialog, _ ->
-                dialog.dismiss()
+            .setNegativeButton(R.string.no) { _, _ ->
+                fragmentManager?.popBackStack()
+            }
+            .setOnCancelListener {
+                fragmentManager?.popBackStack()
             }
             .create()
             .show()
@@ -94,8 +100,9 @@ class RegistrationFragment : BaseFragment(), RegistrationFragmentView,
         savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_registration, container, false)
 
+        registrationPagerAdapter = RegistrationPagerAdapter(childFragmentManager)
+
         view.vpRegistration.apply {
-            val registrationPagerAdapter = RegistrationPagerAdapter(childFragmentManager)
             adapter = registrationPagerAdapter
             offscreenPageLimit = registrationPagerAdapter.pages.size
         }

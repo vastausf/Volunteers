@@ -33,8 +33,10 @@
     </style>
 
     <style name="EditText" parent="AppTheme">
-        <item name="android:width">@dimen/view_size_xx_huge</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">@dimen/view_size_xx_huge</item>
         <item name="android:padding">@dimen/spacing_tiny</item>
+        <item name="android:layout_margin">@dimen/spacing_x_small</item>
         <item name="android:singleLine">true</item>
         <item name="android:textAlignment">center</item>
         <item name="android:textSize">@dimen/font_size_large</item>
@@ -51,6 +53,16 @@
         <item name="android:fontFamily">@font/roboto_medium</item>
         <item name="android:layout_margin">@dimen/spacing_xxx_small</item>
         <item name="android:textSize">@dimen/font_size_x_large</item>
+    </style>
+
+    <style name="HintText" parent="AppTheme">
+        <item name="android:textSize">@dimen/font_size_small</item>
+        <item name="android:textColor">@color/colorHint</item>
+    </style>
+
+    <style name="ItemText" parent="AppTheme">
+        <item name="android:textSize">@dimen/font_size_small</item>
+        <item name="android:layout_margin">@dimen/spacing_xxx_small</item>
     </style>
 
     <style name="SecondaryText" parent="AppTheme">
@@ -84,6 +96,8 @@
     <style name="SpreadLine" parent="AppTheme">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/view_size_x_tiny</item>
+        <item name="android:layout_marginTop">@dimen/spacing_tiny</item>
+        <item name="android:layout_marginBottom">@dimen/spacing_tiny</item>
         <item name="android:layout_marginLeft">@dimen/spacing_small</item>
         <item name="android:layout_marginRight">@dimen/spacing_small</item>
         <item name="android:background">@color/colorSpread</item>

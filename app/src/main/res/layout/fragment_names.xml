@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorLayoutBackground"
+    >
+
+    <TextView
+        android:id="@+id/textView"
+        style="@style/HeaderText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/spacing_x_large"
+        android:text="@string/name"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        >
+
+        <EditText
+            android:id="@+id/etFirstName"
+            style="@style/EditText"
+            android:hint="@string/first_name"
+            android:inputType="textAutoCorrect|textPersonName|textCapWords"
+            />
+
+        <EditText
+            android:id="@+id/etLastName"
+            style="@style/EditText"
+            android:hint="@string/last_name"
+            android:inputType="textAutoCorrect|textPersonName|textCapWords"
+            />
+
+        <EditText
+            android:id="@+id/etMiddleName"
+            style="@style/EditText"
+            android:hint="@string/middle_name"
+            android:inputType="textAutoCorrect|textPersonName|textCapWords"
+            />
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

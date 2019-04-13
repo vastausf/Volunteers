@@ -12,6 +12,8 @@ interface BaseFragmentView : MvpView {
 
     fun replaceFragment(fragment: BaseFragment, finish: Boolean = false, container: Int = R.id.fragmentContainer)
 
+    fun goBack()
+
     fun showToast(text: Any)
 
     fun loadingProgress(state: Boolean)
